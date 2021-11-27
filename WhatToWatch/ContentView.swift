@@ -17,7 +17,7 @@ struct ContentView: View {
     private var items: FetchedResults<Item>
 
     var body: some View {
-        Text("Jakoob")
+        Text("Kyrollos!!!")
     }
 
     private func addItem() {
