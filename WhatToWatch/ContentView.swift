@@ -18,9 +18,6 @@ struct ContentView: View {
 
     var body: some View {
         Text("Hello world")
-        Text("Hello world2")
-        Text("Hello world2")
-        Text("Hello world2")
     }
 
     private func addItem() {
