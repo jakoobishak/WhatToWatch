@@ -21,6 +21,8 @@ struct ContentView: View {
         Text("Hello world")
         
         Text("Hello world")
+        Text("Hello world")
+        Text("Hello world")
     }
 
     private func addItem() {
