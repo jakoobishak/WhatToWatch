@@ -16,6 +16,11 @@
 		A1DFBEC9275230FA00DFCFCF /* WhatToWatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFBEC8275230FA00DFCFCF /* WhatToWatchTests.swift */; };
 		A1DFBED3275230FA00DFCFCF /* WhatToWatchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFBED2275230FA00DFCFCF /* WhatToWatchUITests.swift */; };
 		A1DFBED5275230FA00DFCFCF /* WhatToWatchUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFBED4275230FA00DFCFCF /* WhatToWatchUITestsLaunchTests.swift */; };
+		A1DFBEE3275269B600DFCFCF /* MovieSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFBEE2275269B600DFCFCF /* MovieSet.swift */; };
+		A1DFBEE5275269C400DFCFCF /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFBEE4275269C400DFCFCF /* Movie.swift */; };
+		A1DFBEE7275269D600DFCFCF /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFBEE6275269D600DFCFCF /* MovieModel.swift */; };
+		A1DFBEEC27527C7C00DFCFCF /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFBEEB27527C7C00DFCFCF /* Remote.swift */; };
+		A1DFBEF027528A8400DFCFCF /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFBEEF27528A8400DFCFCF /* SwipeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +53,11 @@
 		A1DFBECE275230FA00DFCFCF /* WhatToWatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhatToWatchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1DFBED2275230FA00DFCFCF /* WhatToWatchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatToWatchUITests.swift; sourceTree = "<group>"; };
 		A1DFBED4275230FA00DFCFCF /* WhatToWatchUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatToWatchUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A1DFBEE2275269B600DFCFCF /* MovieSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSet.swift; sourceTree = "<group>"; };
+		A1DFBEE4275269C400DFCFCF /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		A1DFBEE6275269D600DFCFCF /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
+		A1DFBEEB27527C7C00DFCFCF /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
+		A1DFBEEF27528A8400DFCFCF /* SwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +108,11 @@
 		A1DFBEB1275230F800DFCFCF /* WhatToWatch */ = {
 			isa = PBXGroup;
 			children = (
+				A1DFBEE12752699B00DFCFCF /* Data */,
 				A1DFBEB2275230F800DFCFCF /* WhatToWatchApp.swift */,
 				A1DFBEB4275230F800DFCFCF /* ContentView.swift */,
+				A1DFBEEB27527C7C00DFCFCF /* Remote.swift */,
+				A1DFBEEF27528A8400DFCFCF /* SwipeView.swift */,
 				A1DFBEB6275230FA00DFCFCF /* Assets.xcassets */,
 				A1DFBEBB275230FA00DFCFCF /* Persistence.swift */,
 				A1DFBEBD275230FA00DFCFCF /* WhatToWatch.xcdatamodeld */,
@@ -131,6 +144,16 @@
 				A1DFBED4275230FA00DFCFCF /* WhatToWatchUITestsLaunchTests.swift */,
 			);
 			path = WhatToWatchUITests;
+			sourceTree = "<group>";
+		};
+		A1DFBEE12752699B00DFCFCF /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A1DFBEE2275269B600DFCFCF /* MovieSet.swift */,
+				A1DFBEE4275269C400DFCFCF /* Movie.swift */,
+				A1DFBEE6275269D600DFCFCF /* MovieModel.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,8 +286,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1DFBEE7275269D600DFCFCF /* MovieModel.swift in Sources */,
+				A1DFBEE3275269B600DFCFCF /* MovieSet.swift in Sources */,
 				A1DFBEBC275230FA00DFCFCF /* Persistence.swift in Sources */,
+				A1DFBEEC27527C7C00DFCFCF /* Remote.swift in Sources */,
+				A1DFBEE5275269C400DFCFCF /* Movie.swift in Sources */,
 				A1DFBEB5275230F800DFCFCF /* ContentView.swift in Sources */,
+				A1DFBEF027528A8400DFCFCF /* SwipeView.swift in Sources */,
 				A1DFBEBF275230FA00DFCFCF /* WhatToWatch.xcdatamodeld in Sources */,
 				A1DFBEB3275230F800DFCFCF /* WhatToWatchApp.swift in Sources */,
 			);
