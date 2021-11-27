@@ -20,6 +20,8 @@ struct ContentView: View {
         Text("Hello world")
         Text("Hello world2")
         Text("Hello world3")
+        Text("Hello world4")
+        Text("Hello world5")
     }
 
     private func addItem() {
