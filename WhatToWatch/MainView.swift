@@ -5,6 +5,15 @@
 //  Created by Kyrollos Ceriacous on 2021-11-28.s
 //
 
+
+/*
+ 
+ Code inspiration regarding the overall design and layout provided by https://www.youtube.com/watch?v=9lVLFlyaiq4
+ 
+ 
+ */
+
+
 import SwiftUI
 
 struct MainView: View {
