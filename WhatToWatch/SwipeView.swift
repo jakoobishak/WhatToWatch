@@ -11,7 +11,7 @@
  
  Code inspiration regarding the overall design and layout provided by https://www.youtube.com/watch?v=9lVLFlyaiq4
  
- Code inspiration regarding the implementation of the beneath function and button provided by https://www.youtube.com/watch?v=9lVLFlyaiq4
+ 
  */
 
 import SwiftUI
@@ -26,6 +26,9 @@ struct SwipeView: View {
     var body: some View {
         VStack(spacing: 0){
             Spacer()
+            /*
+            Code inspiration regarding the implementation of the beneath function and button provided by https://www.youtube.com/watch?v=9lVLFlyaiq4
+             */
                 .fullScreenCover(isPresented: $showCover, content: {
                     ZStack(alignment: .topLeading){
                         Color.clear
