@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AdditionalInfoView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Here all the corresponding info about the tapped movie will be displayed... but that's for later :)")
     }
 }
 

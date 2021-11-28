@@ -11,7 +11,11 @@ struct WatchListView: View {
     var body: some View {
         List{
             ForEach(0..<9){ index in
-                Text("Movie in watch list \(index)")
+                NavigationLink{
+                    AdditionalInfoView()
+                } label: {
+                    Text("Movie in watch list \(index)")
+                }
             }
         }
     }
