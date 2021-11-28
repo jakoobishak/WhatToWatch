@@ -9,15 +9,18 @@ import SwiftUI
 
 struct WatchListView: View {
     var body: some View {
-        List{
-            ForEach(0..<9){ index in
-                NavigationLink{
-                    AdditionalInfoView()
-                } label: {
-                    Text("Movie in watch list \(index)")
+        VStack(spacing: 0){
+            List{
+                ForEach(0..<9){ index in
+                    NavigationLink{
+                        AdditionalInfoView()
+                    } label: {
+                        Text("Movie in watch list \(index)")
+                    }
                 }
             }
         }
+        
     }
 }
 

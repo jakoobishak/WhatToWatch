@@ -32,7 +32,7 @@ struct MainView: View {
     var body: some View {
         //Text(movie.title)
         
-        VStack{
+        VStack(spacing: 0){
             ZStack{
                 switch selectedIndex{
                 case 0:
@@ -43,15 +43,16 @@ struct MainView: View {
                         .navigationTitle("Start swiping!")
                 case 2:
                     TrashListView()
-                        .navigationTitle("The trash list maaaaan")
+                        .navigationTitle("The trash list")
                 
                 default:
                     WatchListView()
                         .navigationTitle("Watch list")
                 }
             }
-            
-            Spacer()
+                        
+            Divider()
+                .padding(.bottom, 8)
             
             HStack{
                 ForEach(0..<3){ index in
