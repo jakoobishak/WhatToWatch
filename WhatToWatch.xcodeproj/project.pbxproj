@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0898B8F42753C90300446BFA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0898B8F32753C90300446BFA /* MainView.swift */; };
 		A1DFBEB3275230F800DFCFCF /* WhatToWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFBEB2275230F800DFCFCF /* WhatToWatchApp.swift */; };
 		A1DFBEB5275230F800DFCFCF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFBEB4275230F800DFCFCF /* ContentView.swift */; };
 		A1DFBEB7275230FA00DFCFCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1DFBEB6275230FA00DFCFCF /* Assets.xcassets */; };
@@ -20,7 +21,6 @@
 		A1DFBEE5275269C400DFCFCF /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFBEE4275269C400DFCFCF /* Movie.swift */; };
 		A1DFBEE7275269D600DFCFCF /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFBEE6275269D600DFCFCF /* MovieModel.swift */; };
 		A1DFBEEC27527C7C00DFCFCF /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFBEEB27527C7C00DFCFCF /* Remote.swift */; };
-		A1DFBEF027528A8400DFCFCF /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFBEEF27528A8400DFCFCF /* SwipeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0898B8F32753C90300446BFA /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		A1DFBEAF275230F800DFCFCF /* WhatToWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatToWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1DFBEB2275230F800DFCFCF /* WhatToWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatToWatchApp.swift; sourceTree = "<group>"; };
 		A1DFBEB4275230F800DFCFCF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,7 +58,6 @@
 		A1DFBEE4275269C400DFCFCF /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		A1DFBEE6275269D600DFCFCF /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		A1DFBEEB27527C7C00DFCFCF /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
-		A1DFBEEF27528A8400DFCFCF /* SwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,8 +111,8 @@
 				A1DFBEE12752699B00DFCFCF /* Data */,
 				A1DFBEB2275230F800DFCFCF /* WhatToWatchApp.swift */,
 				A1DFBEB4275230F800DFCFCF /* ContentView.swift */,
+				0898B8F32753C90300446BFA /* MainView.swift */,
 				A1DFBEEB27527C7C00DFCFCF /* Remote.swift */,
-				A1DFBEEF27528A8400DFCFCF /* SwipeView.swift */,
 				A1DFBEB6275230FA00DFCFCF /* Assets.xcassets */,
 				A1DFBEBB275230FA00DFCFCF /* Persistence.swift */,
 				A1DFBEBD275230FA00DFCFCF /* WhatToWatch.xcdatamodeld */,
@@ -287,12 +287,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1DFBEE7275269D600DFCFCF /* MovieModel.swift in Sources */,
+				0898B8F42753C90300446BFA /* MainView.swift in Sources */,
 				A1DFBEE3275269B600DFCFCF /* MovieSet.swift in Sources */,
 				A1DFBEBC275230FA00DFCFCF /* Persistence.swift in Sources */,
 				A1DFBEEC27527C7C00DFCFCF /* Remote.swift in Sources */,
 				A1DFBEE5275269C400DFCFCF /* Movie.swift in Sources */,
 				A1DFBEB5275230F800DFCFCF /* ContentView.swift in Sources */,
-				A1DFBEF027528A8400DFCFCF /* SwipeView.swift in Sources */,
 				A1DFBEBF275230FA00DFCFCF /* WhatToWatch.xcdatamodeld in Sources */,
 				A1DFBEB3275230F800DFCFCF /* WhatToWatchApp.swift in Sources */,
 			);

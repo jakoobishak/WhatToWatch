@@ -18,30 +18,15 @@ struct ContentView: View {
     
     
     
-    @StateObject var movieModel = MovieModel()
     
     
     var body: some View {
-        
         NavigationView {
-            VStack{
-                Button{
-                    movieModel.remote.fetch()
-                } label: {
-                    Text("Start swiping")
-                }
-                
-                if let movies = movieModel.remote.data?.results {
-                    ForEach(movies){ movie in
-                        NavigationLink(destination: TJEna(movie: movie)) {
-                            Text("TJENA")
-                        }
-                    }
-                }
-                
+            NavigationLink{
+                MainView()
+            } label: {
+                Text("Let's start")
             }
-            
-            
         }
     }
     
