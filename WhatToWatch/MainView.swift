@@ -36,32 +36,18 @@ struct MainView: View {
             ZStack{
                 switch selectedIndex{
                 case 0:
-                    List{
-                        ForEach(0..<9){ index in
-                            Text("Movie in watch list \(index)")
-                        }
+                    WatchListView()
                         .navigationTitle("Watch list")
-
-                    }
                 case 1:
-                    Text("Next view where one can swipe")
+                    SwipeView()
                         .navigationTitle("Start swiping!")
-
-                
                 case 2:
-                    Text("The trashlist bro")
+                    TrashListView()
                         .navigationTitle("The trash list maaaaan")
                 
                 default:
-                    List{
-                        ForEach(0..<9){ index in
-                            Text("Movie in watch list \(index)")
-                        }
+                    WatchListView()
                         .navigationTitle("Watch list")
-
-                    }
-                        .navigationTitle("Start swiping! (default)")
-
                 }
             }
             
@@ -73,9 +59,15 @@ struct MainView: View {
                         selectedIndex = index
                     }, label: {
                         Spacer()
-                        Image(systemName: tabBarImages[index])
-                            .font(.system(size: 30, weight: .bold))
-                            .foregroundColor(selectedIndex == index ? tabBarColours[index] : .init(white: 0.8))
+                        if index == 1{
+                            Image(systemName: tabBarImages[index])
+                                .font(.system(size: 45, weight: .bold))
+                                .foregroundColor(selectedIndex == index ? tabBarColours[index] : .init(white: 0.8))
+                        } else {
+                            Image(systemName: tabBarImages[index])
+                                .font(.system(size: 30, weight: .bold))
+                                .foregroundColor(selectedIndex == index ? tabBarColours[index] : .init(white: 0.8))
+                        }
                         Spacer()
                     })
                 }
