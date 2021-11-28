@@ -13,7 +13,7 @@
 		088B08852753D8EE0011CACB /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B08842753D8EE0011CACB /* SwipeView.swift */; };
 		0898B8F42753C90300446BFA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0898B8F32753C90300446BFA /* MainView.swift */; };
 		A1DFBEB3275230F800DFCFCF /* WhatToWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFBEB2275230F800DFCFCF /* WhatToWatchApp.swift */; };
-		A1DFBEB5275230F800DFCFCF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFBEB4275230F800DFCFCF /* ContentView.swift */; };
+		A1DFBEB5275230F800DFCFCF /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFBEB4275230F800DFCFCF /* StartView.swift */; };
 		A1DFBEB7275230FA00DFCFCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1DFBEB6275230FA00DFCFCF /* Assets.xcassets */; };
 		A1DFBEBA275230FA00DFCFCF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1DFBEB9275230FA00DFCFCF /* Preview Assets.xcassets */; };
 		A1DFBEBC275230FA00DFCFCF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFBEBB275230FA00DFCFCF /* Persistence.swift */; };
@@ -52,7 +52,7 @@
 		0898B8F32753C90300446BFA /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		A1DFBEAF275230F800DFCFCF /* WhatToWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatToWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1DFBEB2275230F800DFCFCF /* WhatToWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatToWatchApp.swift; sourceTree = "<group>"; };
-		A1DFBEB4275230F800DFCFCF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A1DFBEB4275230F800DFCFCF /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		A1DFBEB6275230FA00DFCFCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1DFBEB9275230FA00DFCFCF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A1DFBEBB275230FA00DFCFCF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 			children = (
 				A1DFBEE12752699B00DFCFCF /* Data */,
 				A1DFBEB2275230F800DFCFCF /* WhatToWatchApp.swift */,
-				A1DFBEB4275230F800DFCFCF /* ContentView.swift */,
+				A1DFBEB4275230F800DFCFCF /* StartView.swift */,
 				088B08822753D81F0011CACB /* AdditionalInfoView.swift */,
 				088B08802753D8020011CACB /* TrashListView.swift */,
 				088B08842753D8EE0011CACB /* SwipeView.swift */,
@@ -305,7 +305,7 @@
 				A1DFBEBC275230FA00DFCFCF /* Persistence.swift in Sources */,
 				A1DFBEEC27527C7C00DFCFCF /* Remote.swift in Sources */,
 				A1DFBEE5275269C400DFCFCF /* Movie.swift in Sources */,
-				A1DFBEB5275230F800DFCFCF /* ContentView.swift in Sources */,
+				A1DFBEB5275230F800DFCFCF /* StartView.swift in Sources */,
 				A1DFBEBF275230FA00DFCFCF /* WhatToWatch.xcdatamodeld in Sources */,
 				088B08852753D8EE0011CACB /* SwipeView.swift in Sources */,
 				088B087F2753D7F20011CACB /* WatchListView.swift in Sources */,
