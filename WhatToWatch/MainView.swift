@@ -62,7 +62,7 @@ struct MainView: View {
                         Spacer()
                         if index == 1{
                             Image(systemName: tabBarImages[index])
-                                .font(.system(size: 45, weight: .bold))
+                                .font(.system(size: 50, weight: .bold))
                                 .foregroundColor(selectedIndex == index ? tabBarColours[index] : .init(white: 0.8))
                         } else {
                             Image(systemName: tabBarImages[index])
