@@ -16,11 +16,13 @@ class MovieModel: ObservableObject {
     
     private var cancellableTas: AnyCancellable?
     private var anyCancellable: AnyCancellable?
+    private var pageCount = 1
     
     let remote: Remote<MovieSet>
     
     init(){
-        remote = Remote(url: URL(string: "https://api.themoviedb.org/3/movie/top_rated?api_key=646d70ab25d3bc369aa0ed0b2ed9e2d8&language=en-US&page=400")!)
+        remote = Remote(url: URL(string: "https://api.themoviedb.org/3/movie/top_rated?api_key=646d70ab25d3bc369aa0ed0b2ed9e2d8&language=en-US&page=\(pageCount)")!)
+        pageCount += 1
         anyCancellable = remote.objectWillChange.sink(receiveValue: { [weak self] in
             self?.objectWillChange.send()
         })

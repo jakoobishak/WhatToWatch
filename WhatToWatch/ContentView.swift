@@ -34,7 +34,7 @@ struct ContentView: View {
                 if let movies = movieModel.remote.data?.results {
                     ForEach(movies){ movie in
                         NavigationLink(destination: TJEna(movie: movie)) {
-                            Text("TJENA")
+                            Text(movie.title)
                         }
                     }
                 }
