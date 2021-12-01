@@ -15,4 +15,5 @@ struct Movie : Decodable, Identifiable {
     let releaseDate: String
     let voteAverage: Float
     let voteCount: Int
+    let genreIds: [Int]
 }

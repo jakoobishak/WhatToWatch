@@ -17,6 +17,7 @@ struct StartView: View {
     private var items: FetchedResults<Item>
     
     @StateObject var movieModel = MovieModel()
+    @StateObject var genreModel = GenreModel()
     
     var body: some View {
         NavigationView {
@@ -24,6 +25,7 @@ struct StartView: View {
             VStack{
                 Button{
                     movieModel.remote.fetch()
+                    genreModel.remote.fetch()
                 } label: {
                     Text("Start swiping")
                 }
@@ -38,6 +40,7 @@ struct StartView: View {
             }
             .onAppear {
                 movieModel.remote.fetch()
+                genreModel.remote.fetch()
             }
         }
     }

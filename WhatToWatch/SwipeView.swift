@@ -24,6 +24,7 @@ struct SwipeView: View {
     let buttonColours = [Color.green, Color.black, Color.red]
     
     var movie: Movie
+    @StateObject var genreModel = GenreModel()
     
     var body: some View {
         VStack(spacing: 0){
@@ -73,6 +74,18 @@ struct SwipeView: View {
                                         .frame(maxWidth: .infinity, alignment: .center)
                                         .multilineTextAlignment(.center)
                                         .padding(20)
+                                    
+                                    if let genres = genreModel.remote.data?.genres {
+                                        ForEach(movie.genreIds, id: \.self){ movieId in
+                                            ForEach(genres) { genre in
+                                                if(movieId == genre.id){
+                                                    Text(genre.name)
+                                                }
+                                            }
+                                            
+                                        }
+                                    }
+                                    
                                 }
                                 
                             }.padding(20)
@@ -101,6 +114,7 @@ struct SwipeView: View {
                         //TODO REST OF THE BUTTONS!!!!!!!
                         if index == 1{
                             showCover.toggle()
+                            genreModel.remote.fetch()
                             return
                         }
                     }, label: {
