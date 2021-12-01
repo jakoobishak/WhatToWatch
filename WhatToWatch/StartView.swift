@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+struct StartView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
@@ -16,14 +16,11 @@ struct ContentView: View {
         animation: .default)
     private var items: FetchedResults<Item>
     
-    
-    
     @StateObject var movieModel = MovieModel()
     
-    
     var body: some View {
-        
         NavigationView {
+
             VStack{
                 Button{
                     movieModel.remote.fetch()
@@ -33,15 +30,15 @@ struct ContentView: View {
                 
                 if let movies = movieModel.remote.data?.results {
                     ForEach(movies){ movie in
-                        NavigationLink(destination: TJEna(movie: movie)) {
+                        NavigationLink(destination: MainView(movie: movie)) {
                             Text(movie.title)
                         }
                     }
                 }
-                
             }
-            
-            
+            .onAppear {
+                movieModel.remote.fetch()
+            }
         }
     }
     
@@ -86,6 +83,6 @@ private let itemFormatter: DateFormatter = {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        StartView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
