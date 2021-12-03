@@ -39,10 +39,10 @@ class Remote<ResultData>: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 self?.isLoading = false
-                //print(completion)
+                print(completion)
             }, receiveValue: { [weak self] data in
                 self?.data = data
-                //print(data)
+                print(data)
             })
     }
     

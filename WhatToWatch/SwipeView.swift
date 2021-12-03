@@ -25,8 +25,7 @@ struct SwipeView: View {
     
     var movie: Movie
     @StateObject var genreModel = GenreModel()
-    
-    //@Published var likedMoviesList = [Int]()
+    @AppStorage("likedMoviesList") var likedMoviesList = [Int]()
     
     var body: some View {
         VStack(spacing: 0){

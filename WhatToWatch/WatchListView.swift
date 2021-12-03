@@ -8,24 +8,34 @@
 import SwiftUI
 
 struct WatchListView: View {
+    
+    @StateObject var movieDetailsModel = MovieDetailsModel()
+    @AppStorage("likedMoviesList") var likedMoviesList = [Int]()
+    
     var body: some View {
         VStack(spacing: 0){
             List{
-                ForEach(0..<9){ index in
-                    NavigationLink{
-                        AdditionalInfoView()
-                    } label: {
-                        Text("Movie in watch list \(index)")
-                    }
-                }
+                
+                Button{
+                     //movieModel.changeMoviesPage()
+                     //movieModel.remote.fetch()
+                    movieDetailsModel.getMovieDetails(movieId: 19404)
+                    movieDetailsModel.remote.fetch()
+                    
+                 } label: {
+                     Text("Start swiping")
+                 }
+                
+                
             }
+            
         }
         
     }
 }
 
-struct WatchListView_Previews: PreviewProvider {
-    static var previews: some View {
-        WatchListView()
-    }
-}
+/*struct WatchListView_Previews: PreviewProvider {
+ static var previews: some View {
+ WatchListView()
+ }
+ }*/

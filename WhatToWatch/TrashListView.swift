@@ -14,7 +14,7 @@ struct TrashListView: View {
                 Section(header: Text("I don't want to watch these!")){
                     ForEach(0..<5){ index in
                         NavigationLink{
-                            AdditionalInfoView()
+                            //AdditionalInfoView()
                         } label: {
                             Text("Trash movie \(index)")
                         }
@@ -24,7 +24,7 @@ struct TrashListView: View {
                 Section(header: Text("Already watched...")){
                     ForEach(0..<5){ index in
                         NavigationLink{
-                            AdditionalInfoView()
+                            //AdditionalInfoView()
                         } label: {
                             Text("Already watched movie \(index)")
                         }

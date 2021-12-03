@@ -24,8 +24,6 @@ struct StartView: View {
 
             VStack{
                 
-    
-                
                /* Button{
                     //movieModel.changeMoviesPage()
                     //movieModel.remote.fetch()
@@ -34,12 +32,13 @@ struct StartView: View {
                     Text("Start swiping")
                 }*/
                 
+
+                
                 if let movies = movieModel.remote.data?.results {
                     
                         NavigationLink(destination: MainView(movie: movies[0])) {
                             Text("Start swiping")
                         }
-                    
                 }
             }
             .onAppear {
