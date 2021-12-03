@@ -26,6 +26,8 @@ struct SwipeView: View {
     var movie: Movie
     @StateObject var genreModel = GenreModel()
     
+    //@Published var likedMoviesList = [Int]()
+    
     var body: some View {
         VStack(spacing: 0){
             Spacer()
@@ -82,19 +84,16 @@ struct SwipeView: View {
                                                     Text(genre.name)
                                                 }
                                             }
-                                            
                                         }
                                     }
-                                    
                                 }
                                 
                             }.padding(20)
-                            
                         }.frame(maxWidth: .infinity, maxHeight: .infinity).padding()
-                            
+                        
                         Spacer()
+                        
                     }
-                    
                 })
             
             Text(movie.title)
@@ -105,13 +104,16 @@ struct SwipeView: View {
             }, placeholder: {ProgressView()})
                 .frame(maxWidth: 500, maxHeight: 400)
                 .padding()
-                
-                
-            
+                   
             HStack{
                 ForEach(0..<3){ index in
                     Button(action: {
                         //TODO REST OF THE BUTTONS!!!!!!!
+                        
+                        if index == 0 {
+                            likedMoviesList.append(movie.id)
+                        }
+                        
                         if index == 1{
                             showCover.toggle()
                             genreModel.remote.fetch()

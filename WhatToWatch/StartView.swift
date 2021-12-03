@@ -23,19 +23,23 @@ struct StartView: View {
         NavigationView {
 
             VStack{
-                Button{
-                    movieModel.remote.fetch()
-                    genreModel.remote.fetch()
+                
+    
+                
+               /* Button{
+                    //movieModel.changeMoviesPage()
+                    //movieModel.remote.fetch()
+                   
                 } label: {
                     Text("Start swiping")
-                }
+                }*/
                 
                 if let movies = movieModel.remote.data?.results {
-                    ForEach(movies){ movie in
-                        NavigationLink(destination: MainView(movie: movie)) {
-                            Text(movie.title)
+                    
+                        NavigationLink(destination: MainView(movie: movies[0])) {
+                            Text("Start swiping")
                         }
-                    }
+                    
                 }
             }
             .onAppear {

@@ -18,15 +18,10 @@ import SwiftUI
 
 struct MainView: View {
     
-    @State var selectedIndex = 0
+    @State var selectedIndex = 1
     
     let tabBarImages = ["heart.rectangle", "hand.draw", "trash.square"]
     let tabBarColours = [Color.red, Color.yellow, Color.blue]
-    
-    /*init(){
-        UITabBar.appearance().barTintColor = .systemBackground
-        UINavigationBar.appearance().barTintColor = .systemBackground
-    }*/
     
     var movie : Movie
     
@@ -35,13 +30,13 @@ struct MainView: View {
         VStack(spacing: 0){
             ZStack{
                 switch selectedIndex{
+                
                 case 0:
                     WatchListView()
                         .navigationTitle("Watch list")
                 case 1:
                     SwipeView(movie: movie)
                         .navigationTitle("Lets Swipe!")
-                        
                 case 2:
                     TrashListView()
                         .navigationTitle("The trash list")

@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 class Remote<ResultData>: ObservableObject {
     
@@ -38,10 +39,10 @@ class Remote<ResultData>: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 self?.isLoading = false
-                print(completion)
+                //print(completion)
             }, receiveValue: { [weak self] data in
                 self?.data = data
-                print(data)
+                //print(data)
             })
     }
     
@@ -54,6 +55,7 @@ extension Remote where ResultData: Decodable {
             let jsonDecoder = JSONDecoder()
             jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
             return try jsonDecoder.decode(ResultData.self, from: data)
+            
         }
     }
     
