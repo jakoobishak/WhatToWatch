@@ -12,15 +12,26 @@ struct WatchListView: View {
     @StateObject var movieDetailsModel = MovieDetailsModel()
     @AppStorage("likedMoviesList") var likedMoviesList = [Int]()
     
+    
     var body: some View {
         VStack(spacing: 0){
             List{
                 
+                
+                if let movieDetails = movieDetailsModel.remote.data {
+
+                        Text("\(movieDetails.title)")
+                
+                    
+                }
+                
                 Button{
                      //movieModel.changeMoviesPage()
                      //movieModel.remote.fetch()
-                    movieDetailsModel.getMovieDetails(movieId: 19404)
-                    movieDetailsModel.remote.fetch()
+                    
+                    
+                    
+                    
                     
                  } label: {
                      Text("Start swiping")
@@ -28,6 +39,13 @@ struct WatchListView: View {
                 
                 
             }
+            
+        }
+        .onAppear {
+            movieDetailsModel.getMovieDetails(movies: likedMoviesList)
+            //movieDetailsModel.remote.fetch()
+                
+            
             
         }
         

@@ -19,6 +19,7 @@ struct StartView: View {
     @StateObject var movieModel = MovieModel()
     @StateObject var genreModel = GenreModel()
     
+    
     var body: some View {
         NavigationView {
 
@@ -31,14 +32,14 @@ struct StartView: View {
                 } label: {
                     Text("Start swiping")
                 }*/
-                
 
-                
                 if let movies = movieModel.remote.data?.results {
-                    
-                        NavigationLink(destination: MainView(movie: movies[0])) {
+                    ForEach(movies) { index in
+                        NavigationLink(destination: MainView(movie: index)) {
                             Text("Start swiping")
                         }
+                    }
+                        
                 }
             }
             .onAppear {

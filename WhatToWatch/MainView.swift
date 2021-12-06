@@ -23,6 +23,8 @@ struct MainView: View {
     let tabBarImages = ["heart.rectangle", "hand.draw", "trash.square"]
     let tabBarColours = [Color.red, Color.yellow, Color.blue]
     
+    
+    
     var movie : Movie
     
     var body: some View {
@@ -54,6 +56,9 @@ struct MainView: View {
                 ForEach(0..<3){ index in
                     Button(action: {
                         selectedIndex = index
+                        if index == 0 {
+                            
+                        }
                     }, label: {
                         Spacer()
                         if index == 1{
@@ -70,7 +75,7 @@ struct MainView: View {
                 }
             }
         }
-            .navigationBarBackButtonHidden(true)
+            //.navigationBarBackButtonHidden(true)
     }
 }
 
