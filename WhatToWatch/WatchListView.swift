@@ -17,38 +17,26 @@ struct WatchListView: View {
         VStack(spacing: 0){
             List{
                 
-                
                 if let movieDetails = movieDetailsModel.remote.data {
-
-                        Text("\(movieDetails.title)")
-                
-                    
+                    Text("\(movieDetails.title)")
                 }
                 
                 Button{
                      //movieModel.changeMoviesPage()
                      //movieModel.remote.fetch()
                     
-                    
-                    
-                    
-                    
                  } label: {
                      Text("Start swiping")
                  }
-                
-                
             }
             
         }
         .onAppear {
+
+            
             movieDetailsModel.getMovieDetails(movies: likedMoviesList)
             //movieDetailsModel.remote.fetch()
-                
-            
-            
         }
-        
     }
 }
 

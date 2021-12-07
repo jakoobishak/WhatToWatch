@@ -12,24 +12,50 @@ import SwiftUI
 class MovieDetailsModel: ObservableObject {
     
     var getURL = "https://api.themoviedb.org/3/movie/19404?api_key=646d70ab25d3bc369aa0ed0b2ed9e2d8&language=en-US"
-
+    
     private var cancellableTas: AnyCancellable?
     private var anyCancellable: AnyCancellable?
     
     var remote: Remote<MovieDetails>
     
+
     
     func getMovieDetails(movies: [Int]) {
-        for movie in movies {
-            let detailsURL = "https://api.themoviedb.org/3/movie/\(movie)?api_key=646d70ab25d3bc369aa0ed0b2ed9e2d8&language=en-US"
-            remote = Remote(url: URL(string: detailsURL)!)
-            anyCancellable = remote.objectWillChange.sink(receiveValue: { [weak self] in
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            let detailsURL = "https://api.themoviedb.org/3/movie/\(movies[0])?api_key=646d70ab25d3bc369aa0ed0b2ed9e2d8&language=en-US"
+            self.remote = Remote(url: URL(string: detailsURL)!)
+            self.anyCancellable = self.remote.objectWillChange.sink(receiveValue: { [weak self] in
                 self?.objectWillChange.send()
             })
-            remote.fetch()
-            print(movie)
+            self.remote.fetch()
+
+            print(movies[0])
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
+            let detailsURL = "https://api.themoviedb.org/3/movie/\(movies[1])?api_key=646d70ab25d3bc369aa0ed0b2ed9e2d8&language=en-US"
+            self.remote = Remote(url: URL(string: detailsURL)!)
+            self.anyCancellable = self.remote.objectWillChange.sink(receiveValue: { [weak self] in
+                self?.objectWillChange.send()
+            })
+            self.remote.fetch()
+
+            print(movies[1])
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) {
+            let detailsURL = "https://api.themoviedb.org/3/movie/\(movies[2])?api_key=646d70ab25d3bc369aa0ed0b2ed9e2d8&language=en-US"
+            self.remote = Remote(url: URL(string: detailsURL)!)
+            self.anyCancellable = self.remote.objectWillChange.sink(receiveValue: { [weak self] in
+                self?.objectWillChange.send()
+            })
+            self.remote.fetch()
+
+            print(movies[2])
         }
         
+        /*for movie in movies {
+            
+        }*/
     }
     
     init(){
