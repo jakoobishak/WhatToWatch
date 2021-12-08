@@ -18,24 +18,25 @@ struct WatchListView: View {
             List{
                 
                 
-                if let movieDetails = movieDetailsModel.remote.data {
-
-                        Text("\(movieDetails.title)")
+            
                 
+                if let movieDetails = movieDetailsModel.remote.data {
                     
+                        Text("\(movieDetails.title)")
+                    
+                    
+                    Button{
+                         //movieModel.changeMoviesPage()
+                         //movieModel.remote.fetch()
+                        
+                        print(movieDetails)
+                        
+                     } label: {
+                         Text("TEST!!!!!")
+                     }
                 }
                 
-                Button{
-                     //movieModel.changeMoviesPage()
-                     //movieModel.remote.fetch()
-                    
-                    
-                    
-                    
-                    
-                 } label: {
-                     Text("Start swiping")
-                 }
+                
                 
                 
             }

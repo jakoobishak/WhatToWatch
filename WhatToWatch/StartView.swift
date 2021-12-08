@@ -39,7 +39,6 @@ struct StartView: View {
                             Text("Start swiping")
                         }
                     }
-                        
                 }
             }
             .onAppear {
