@@ -26,13 +26,14 @@ struct SwipeView: View {
     var movie: Movie
     @StateObject var genreModel = GenreModel()
     @AppStorage("likedMoviesList") var likedMoviesList = [Int]()
+    @Environment(\.managedObjectContext) var managedObjectContext
     
     
     var body: some View {
         VStack(spacing: 0){
             Spacer()
             /*
-            Code inspiration regarding the implementation of the beneath function and button provided by https://www.youtube.com/watch?v=9lVLFlyaiq4
+             Code inspiration regarding the implementation of the beneath function and button provided by https://www.youtube.com/watch?v=9lVLFlyaiq4
              */
                 .fullScreenCover(isPresented: $showCover, content: {
                     ScrollView{
@@ -97,14 +98,14 @@ struct SwipeView: View {
                 })
             
             Text(movie.title)
-    
+            
             AsyncImage(url: URL(string: "https://www.themoviedb.org/t/p/w500" + movie.posterPath), content: { image in
                 image.resizable()
                     .aspectRatio(contentMode: .fit)
             }, placeholder: {ProgressView()})
                 .frame(maxWidth: 500, maxHeight: 400)
                 .padding()
-                   
+            
             HStack{
                 ForEach(0..<3){ index in
                     Button(action: {
@@ -145,7 +146,7 @@ struct SwipeView: View {
 }
 
 /*struct SwipeView_Previews: PreviewProvider {
-    static var previews: some View {
-        SwipeView()
-    }
-}*/
+ static var previews: some View {
+ SwipeView()
+ }
+ }*/
