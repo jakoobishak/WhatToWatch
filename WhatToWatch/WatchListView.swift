@@ -16,11 +16,6 @@ struct WatchListView: View {
     var body: some View {
         VStack(spacing: 0){
             List{
-                
-                
-            
-                
-                if let movieDetails = movieDetailsModel.remote.data {
                     
                         Text("\(movieDetails.title)")
                     
@@ -34,7 +29,7 @@ struct WatchListView: View {
                      } label: {
                          Text("TEST!!!!!")
                      }
-                }
+                
                 
                 
                 
