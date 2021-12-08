@@ -17,15 +17,12 @@ struct WatchListView: View {
         VStack(spacing: 0){
             List{
                     
-                        Text("\(movieDetails.title)")
                     
                     
                     Button{
                          //movieModel.changeMoviesPage()
                          //movieModel.remote.fetch()
-                        
-                        print(movieDetails)
-                        
+                                                
                      } label: {
                          Text("TEST!!!!!")
                      }
