@@ -20,7 +20,6 @@ struct SwipeView: View {
     
     
     @State var showCover = false
-    
     @State var nextMovie = false
     
     
