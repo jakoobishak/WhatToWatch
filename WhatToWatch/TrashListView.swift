@@ -25,18 +25,6 @@ struct TrashListView: View {
                         }
                     }
                 }
-                
-                /*
-                 Section(header: Text("Already watched...")){
-                 ForEach(0..<5){ index in
-                 NavigationLink{
-                 //AdditionalInfoView()
-                 } label: {
-                 Text("Already watched movie \(index)")
-                 }
-                 }
-                 }
-                 */
             }
         }
         .onAppear {

@@ -6,10 +6,12 @@
 //
 import Foundation
 import Combine
+import SwiftUI
 
 class MovieModel: ObservableObject {
     
-    var pageCount = 1
+    @AppStorage("pageCounter") var pageCounter: Int = 1
+    @AppStorage("counter") var counter = Int()
     
     var getURL = "https://api.themoviedb.org/3/movie/top_rated?api_key=646d70ab25d3bc369aa0ed0b2ed9e2d8&language=en-US&page=1"
 
@@ -19,12 +21,15 @@ class MovieModel: ObservableObject {
     var remote: Remote<MovieSet>
     
     func changeMoviesPage() {
-        pageCount += 1
-        getURL = "https://api.themoviedb.org/3/movie/top_rated?api_key=646d70ab25d3bc369aa0ed0b2ed9e2d8&language=en-US&page=\(pageCount)"
+        if counter == 19{
+            pageCounter += 1
+        }
+        getURL = "https://api.themoviedb.org/3/movie/top_rated?api_key=646d70ab25d3bc369aa0ed0b2ed9e2d8&language=en-US&page=\(pageCounter)"
         remote = Remote(url: URL(string: getURL)!)
         anyCancellable = remote.objectWillChange.sink(receiveValue: { [weak self] in
             self?.objectWillChange.send()
         })
+        remote.fetch()
     }
     
     init(){
