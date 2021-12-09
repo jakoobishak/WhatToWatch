@@ -45,7 +45,7 @@ struct AdditionalInfoView: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                     .multilineTextAlignment(.center)
                     .padding(20)
-                                
+                
                 ForEach(movie.genres, id: \.self) { genre in
                     Text("\(genre.name)")
                 }
@@ -57,7 +57,7 @@ struct AdditionalInfoView: View {
                 } label: {
                     Text("Watch the trailer here")
                 }
-
+                
             }
         }
         .navigationTitle(movie.title)

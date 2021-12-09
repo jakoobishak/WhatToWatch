@@ -14,16 +14,17 @@ struct WatchListView: View {
     
     
     var body: some View {
-        VStack(spacing: 0){
+        VStack(spacing: 0) {
             List{
-                if(!movieDetailsModel.remotes.isEmpty){
+                if(!movieDetailsModel.remotes.isEmpty) {
                     ForEach(likedMoviesList.indices) { i in
-                        if let movie = movieDetailsModel.remotes[i].data{
-                            NavigationLink(destination: AdditionalInfoView(movie: movie)){
+                        if let movie = movieDetailsModel.remotes[i].data {
+                            NavigationLink(destination: AdditionalInfoView(movie: movie)) {
                                 Text("\(movie.title)")
                             }
                         }
                     }
+                    .onDelete(perform: delete)
                 }
             }
         }
@@ -31,10 +32,10 @@ struct WatchListView: View {
             movieDetailsModel.getMovieDetails(movies: likedMoviesList)
         }
     }
+    
+    func delete(at offsets: IndexSet) {
+        likedMoviesList.remove(atOffsets: offsets)
+    }
 }
 
-/*struct WatchListView_Previews: PreviewProvider {
- static var previews: some View {
- WatchListView()
- }
- }*/
+
