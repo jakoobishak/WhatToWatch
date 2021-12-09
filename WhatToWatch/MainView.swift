@@ -25,30 +25,30 @@ struct MainView: View {
     
     
     
-    var movie : Movie
+    var movies : [Movie] = []
     
     var body: some View {
         
         VStack(spacing: 0){
             ZStack{
                 switch selectedIndex{
-                
+                    
                 case 0:
                     WatchListView()
                         .navigationTitle("Watch list")
                 case 1:
-                    SwipeView(movie: movie)
+                    SwipeView(movies: movies) //pass along array
                         .navigationTitle("Lets Swipe!")
                 case 2:
                     TrashListView()
                         .navigationTitle("The trash list")
-                
+                    
                 default:
                     WatchListView()
                         .navigationTitle("Watch list")
                 }
             }
-                        
+            
             Divider()
                 .padding(.bottom, 8)
             
@@ -75,49 +75,6 @@ struct MainView: View {
                 }
             }
         }
-            //.navigationBarBackButtonHidden(true)
+        //.navigationBarBackButtonHidden(true)
     }
 }
-
-
-/*
- 
- @StateObject var movieModel = MovieModel()
- 
- 
- struct declaration HERE!!!!
- 
- NavigationView {
- VStack{
- Button{
- movieModel.remote.fetch()
- } label: {
- Text("Start swiping")
- }
- 
- if let movies = movieModel.remote.data?.results {
- ForEach(movies){ movie in
- NavigationLink(destination: MainView(movie: movie)) {
- Text("TJENA")
- }
- }
- }
- 
- }
- 
- 
- }
- 
- 
- 
- 
- */
-
-
-/*
- struct MainView_Previews: PreviewProvider {
- static var previews: some View {
- MainView()
- }
- }
- */

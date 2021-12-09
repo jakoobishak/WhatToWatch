@@ -11,13 +11,16 @@ import CoreData
 struct StartView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
+    //@FetchRequest(
+    //    sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+    //    animation: .default)
+    //private var items: FetchedResults<Item>
     
     @StateObject var movieModel = MovieModel()
     @StateObject var genreModel = GenreModel()
+    
+    
+    @State private var startApp = false
     
     
     var body: some View {
@@ -32,13 +35,24 @@ struct StartView: View {
                 } label: {
                     Text("Start swiping")
                 }*/
+                
+                
 
                 if let movies = movieModel.remote.data?.results {
+                    NavigationLink {
+                        MainView(movies: movies)
+                    } label: {
+                        Text("Start swiping")
+                    }
+
+                    
+                    /*
                     ForEach(movies) { index in
                         NavigationLink(destination: MainView(movie: index)) {
                             Text("Start swiping")
                         }
                     }
+                    */
                 }
             }
             .onAppear {
@@ -50,8 +64,8 @@ struct StartView: View {
     
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            //let newItem = Item(context: viewContext)
+            //newItem.timestamp = Date()
             
             do {
                 try viewContext.save()
@@ -66,7 +80,7 @@ struct StartView: View {
     
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
+           // offsets.map { items[$0] }.forEach(viewContext.delete)
             
             do {
                 try viewContext.save()

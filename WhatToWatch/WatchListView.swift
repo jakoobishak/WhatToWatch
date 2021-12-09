@@ -16,32 +16,20 @@ struct WatchListView: View {
     var body: some View {
         VStack(spacing: 0){
             List{
-                    
-                    
-                    
-                    Button{
-                         //movieModel.changeMoviesPage()
-                         //movieModel.remote.fetch()
-                                                
-                     } label: {
-                         Text("TEST!!!!!")
-                     }
-                
-                
-                
-                
-                
+                if(!movieDetailsModel.remotes.isEmpty){
+                    ForEach(likedMoviesList.indices) { i in
+                        if let movie = movieDetailsModel.remotes[i].data{
+                            NavigationLink(destination: AdditionalInfoView(movie: movie)){
+                                Text("\(movie.title)")
+                            }
+                        }
+                    }
+                }
             }
-            
         }
         .onAppear {
             movieDetailsModel.getMovieDetails(movies: likedMoviesList)
-            //movieDetailsModel.remote.fetch()
-                
-            
-            
         }
-        
     }
 }
 

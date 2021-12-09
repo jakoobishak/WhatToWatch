@@ -16,6 +16,7 @@ class Remote<ResultData>: ObservableObject {
     @Published var isLoading = false
     @Published var data: ResultData?
     
+    
     let url: URL
     let decode: (Data) throws -> ResultData
     

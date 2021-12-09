@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct MovieSet: Decodable, Encodable {
+struct MovieSet: Decodable {
     let results: [Movie]
 }

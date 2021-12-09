@@ -18,21 +18,33 @@ import SwiftUI
 
 struct SwipeView: View {
     
+    @State var counter = 0
     @State var showCover = false
     
-    let buttonSymbols = ["hand.thumbsup.fill", "arrow.up.circle", "hand.thumbsdown.fill" ]
-    let buttonColours = [Color.green, Color.black, Color.red]
+    @State var nextMovie = false
     
-    var movie: Movie
+    
     @StateObject var genreModel = GenreModel()
+
+    
+    let buttonSymbols = ["hand.thumbsup.fill", "arrow.up.circle", "hand.thumbsdown.fill" ]
+    let buttonColours = [Color.green, Color.orange, Color.red]
+    
+    var movies : [Movie]
+    
     @AppStorage("likedMoviesList") var likedMoviesList = [Int]()
+    @AppStorage("dislikedMoviesList") var dislikedMoviesList = [Int]()
+    @Environment(\.managedObjectContext) var managedObjectContext
     
     
     var body: some View {
         VStack(spacing: 0){
+            
+            
+    
             Spacer()
             /*
-            Code inspiration regarding the implementation of the beneath function and button provided by https://www.youtube.com/watch?v=9lVLFlyaiq4
+             Code inspiration regarding the implementation of the beneath function and button provided by https://www.youtube.com/watch?v=9lVLFlyaiq4
              */
                 .fullScreenCover(isPresented: $showCover, content: {
                     ScrollView{
@@ -52,33 +64,33 @@ struct SwipeView: View {
                             
                             HStack{
                                 VStack{
-                                    Text(movie.title)
+                                    Text(movies[counter].title)
                                         .frame(maxWidth: .infinity, alignment: .center)
                                         .multilineTextAlignment(.center)
                                         .padding(20)
                                     
-                                    Text("\(String(format: "%.1f", movie.voteAverage))")
+                                    Text("\(String(format: "%.1f", movies[counter].voteAverage))")
                                         .frame(maxWidth: .infinity, alignment: .center)
                                         .multilineTextAlignment(.center)
                                         .padding(20)
                                     
-                                    Text("\(movie.voteCount)")
+                                    Text("\(movies[counter].voteCount)")
                                         .frame(maxWidth: .infinity, alignment: .center)
                                         .multilineTextAlignment(.center)
                                         .padding(20)
                                     
-                                    Text(movie.releaseDate)
+                                    Text(movies[counter].releaseDate)
                                         .frame(maxWidth: .infinity, alignment: .center)
                                         .multilineTextAlignment(.center)
                                         .padding(20)
                                     
-                                    Text(movie.overview)
+                                    Text(movies[counter].overview)
                                         .frame(maxWidth: .infinity, alignment: .center)
                                         .multilineTextAlignment(.center)
                                         .padding(20)
                                     
                                     if let genres = genreModel.remote.data?.genres {
-                                        ForEach(movie.genreIds, id: \.self){ movieId in
+                                        ForEach(movies[counter].genreIds, id: \.self){ movieId in
                                             ForEach(genres) { genre in
                                                 if(movieId == genre.id){
                                                     Text(genre.name)
@@ -90,39 +102,38 @@ struct SwipeView: View {
                                 
                             }.padding(20)
                         }.frame(maxWidth: .infinity, maxHeight: .infinity).padding()
-                        
                         Spacer()
-                        
                     }
                 })
             
-            Text(movie.title)
-    
-            AsyncImage(url: URL(string: "https://www.themoviedb.org/t/p/w500" + movie.posterPath), content: { image in
+            Text(movies[counter].title)
+            
+            AsyncImage(url: URL(string: "https://www.themoviedb.org/t/p/w500" + movies[counter].posterPath), content: { image in
                 image.resizable()
                     .aspectRatio(contentMode: .fit)
             }, placeholder: {ProgressView()})
                 .frame(maxWidth: 500, maxHeight: 400)
                 .padding()
-                   
+            
             HStack{
                 ForEach(0..<3){ index in
                     Button(action: {
-                        //TODO REST OF THE BUTTONS!!!!!!!
-                        
                         if index == 0 {
-                            likedMoviesList.append(movie.id)
+                            likedMoviesList.append(movies[counter].id)
+                            counter += 1
+                            
                         }
-                        
-                        if index == 1{
+                        if index == 1 {
                             showCover.toggle()
                             genreModel.remote.fetch()
                             return
                         }
+                        if index == 2 {
+                            dislikedMoviesList.append(movies[counter].id)
+                            counter += 1
+                        }
                     }, label: {
-                        
                         Spacer()
-                        
                         if index == 1{
                             Image(systemName: buttonSymbols[index])
                                 .font(.system(size: 120, weight: .bold))
@@ -143,9 +154,3 @@ struct SwipeView: View {
         }
     }
 }
-
-/*struct SwipeView_Previews: PreviewProvider {
-    static var previews: some View {
-        SwipeView()
-    }
-}*/

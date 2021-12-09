@@ -8,29 +8,39 @@
 import SwiftUI
 
 struct TrashListView: View {
+    @StateObject var movieDetailsModel = MovieDetailsModel()
+    @AppStorage("dislikedMoviesList") var dislikedMoviesList = [Int]()
+    
     var body: some View {
         VStack(spacing: 0){
             List {
                 Section(header: Text("I don't want to watch these!")){
-                    ForEach(0..<5){ index in
-                        NavigationLink{
-                            //AdditionalInfoView()
-                        } label: {
-                            Text("Trash movie \(index)")
+                    if(!movieDetailsModel.remotes.isEmpty){
+                        ForEach(dislikedMoviesList.indices) { i in
+                            if let movie = movieDetailsModel.remotes[i].data{
+                                NavigationLink(destination: AdditionalInfoView(movie: movie)){
+                                    Text("\(movie.title)")
+                                }
+                            }
                         }
                     }
                 }
                 
-                Section(header: Text("Already watched...")){
-                    ForEach(0..<5){ index in
-                        NavigationLink{
-                            //AdditionalInfoView()
-                        } label: {
-                            Text("Already watched movie \(index)")
-                        }
-                    }
-                }
+                /*
+                 Section(header: Text("Already watched...")){
+                 ForEach(0..<5){ index in
+                 NavigationLink{
+                 //AdditionalInfoView()
+                 } label: {
+                 Text("Already watched movie \(index)")
+                 }
+                 }
+                 }
+                 */
             }
+        }
+        .onAppear {
+            movieDetailsModel.getMovieDetails(movies: dislikedMoviesList)
         }
     }
 }

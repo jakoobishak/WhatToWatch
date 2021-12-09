@@ -9,10 +9,10 @@ import SwiftUI
 
 struct AdditionalInfoView: View {
     
-    var movie : Movie
+    var movie : MovieDetails
     
     var body: some View {
-        Text("Here all the corresponding info about the tapped movie will be displayed... but that's for later :)")
+        Text("\(movie.title)")
     }
 }
 
