@@ -18,7 +18,7 @@ import SwiftUI
 
 struct SwipeView: View {
     
-    @State var counter = 0
+    
     @State var showCover = false
     
     @State var nextMovie = false
@@ -34,6 +34,7 @@ struct SwipeView: View {
     
     @AppStorage("likedMoviesList") var likedMoviesList = [Int]()
     @AppStorage("dislikedMoviesList") var dislikedMoviesList = [Int]()
+    @AppStorage("counter") var counter = Int()
     @Environment(\.managedObjectContext) var managedObjectContext
     
     
