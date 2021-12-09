@@ -16,48 +16,18 @@ struct StartView: View {
     //    animation: .default)
     //private var items: FetchedResults<Item>
     
-    @StateObject var movieModel = MovieModel()
-    @StateObject var genreModel = GenreModel()
-    
     
     @State private var startApp = false
     
-    
     var body: some View {
         NavigationView {
-
             VStack{
-                
-               /* Button{
-                    //movieModel.changeMoviesPage()
-                    //movieModel.remote.fetch()
-                   
+                NavigationLink {
+                    MainView()
                 } label: {
                     Text("Start swiping")
-                }*/
-                
-                
-
-                if let movies = movieModel.remote.data?.results {
-                    NavigationLink {
-                        MainView(movies: movies)
-                    } label: {
-                        Text("Start swiping")
-                    }
-
-                    
-                    /*
-                    ForEach(movies) { index in
-                        NavigationLink(destination: MainView(movie: index)) {
-                            Text("Start swiping")
-                        }
-                    }
-                    */
                 }
-            }
-            .onAppear {
-                movieModel.remote.fetch()
-                genreModel.remote.fetch()
+
             }
         }
     }
@@ -80,7 +50,7 @@ struct StartView: View {
     
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-           // offsets.map { items[$0] }.forEach(viewContext.delete)
+            // offsets.map { items[$0] }.forEach(viewContext.delete)
             
             do {
                 try viewContext.save()

@@ -23,10 +23,6 @@ struct MainView: View {
     let tabBarImages = ["heart.rectangle", "hand.draw", "trash.square"]
     let tabBarColours = [Color.red, Color.yellow, Color.blue]
     
-    
-    
-    var movies : [Movie] = []
-    
     var body: some View {
         
         VStack(spacing: 0){
@@ -37,7 +33,7 @@ struct MainView: View {
                     WatchListView()
                         .navigationTitle("Watch list")
                 case 1:
-                    SwipeView(movies: movies) //pass along array
+                    SwipeView()
                         .navigationTitle("Lets Swipe!")
                 case 2:
                     TrashListView()
