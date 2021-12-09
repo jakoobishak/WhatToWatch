@@ -18,23 +18,6 @@ class MovieModel: ObservableObject {
     
     var remote: Remote<MovieSet>
     
-    //////////////////////////////////////////////////////////////////////////////////////
-    
-    @Published var movieSet : MovieSet?
-    
-    private(set) var movieIndex = 0
-    
-    var nextMovie: Movie? {
-           if let movieSet = remote.data, movieSet.results.count > movieIndex {
-               return movieSet.results[movieIndex]
-           } else {
-               return nil
-           }
-       }
-    
-    
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
     func changeMoviesPage() {
         pageCount += 1
         getURL = "https://api.themoviedb.org/3/movie/top_rated?api_key=646d70ab25d3bc369aa0ed0b2ed9e2d8&language=en-US&page=\(pageCount)"

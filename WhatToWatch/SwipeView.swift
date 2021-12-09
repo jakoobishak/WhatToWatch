@@ -23,6 +23,8 @@ struct SwipeView: View {
     
     @State var nextMovie = false
     
+    @EnvironmentObject var movieModel : MovieModel
+
     
     @StateObject var genreModel = GenreModel()
 
@@ -120,8 +122,15 @@ struct SwipeView: View {
                 ForEach(0..<3){ index in
                     Button(action: {
                         if index == 0 {
-                            likedMoviesList.append(movies[counter].id)
-                            counter += 1
+                            if counter == 19 {
+                                likedMoviesList.append(movies[counter].id)
+                                counter = 0
+                                movieModel.changeMoviesPage()
+                                movieModel.remote.fetch()
+                            } else {
+                                likedMoviesList.append(movies[counter].id)
+                                counter += 1
+                            }
                             
                         }
                         if index == 1 {
