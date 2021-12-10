@@ -11,6 +11,8 @@ struct AdditionalInfoView: View {
     
     var movie : MovieDetails
     
+    @StateObject var movieTrailerModel = MovieTrailerModel()
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -52,15 +54,21 @@ struct AdditionalInfoView: View {
                 
                 Spacer()
                 
-                NavigationLink {
-                    TrailerView()
-                } label: {
-                    Text("Watch the trailer here")
+                if let movieTrailer = movieTrailerModel.remote.data?.results{
+                    NavigationLink(destination: TrailerView(trailer: movieTrailer[0], webViewModel: WebViewModel(url: "https://www.youtube.com/embed/" + movieTrailer[0].key))) {
+                        Text("\(movieTrailer[0].name)")
+                        
+                    }
                 }
+                
+                
                 
             }
         }
         .navigationTitle(movie.title)
+        .onAppear{
+            movieTrailerModel.getMovieTrailer(movieId: movie.id)
+        }
         
     }
 }

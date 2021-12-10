@@ -9,36 +9,47 @@ import SwiftUI
 
 struct TrailerView: View {
     
-    @ObservedObject var webViewModel = WebViewModel(url: "https://www.youtube.com/embed/1x0GpEZnwa8")
-
-    var body: some View {
+    
+    
+    var trailer : MovieTrailer
+    
+   
         
-        ZStack {
-            WebViewContainer(webViewModel: webViewModel)
-            if webViewModel.isLoading {
-                ProgressView()
-                    .frame(height: 30)
+    @ObservedObject var webViewModel : WebViewModel
+    
+    var body: some View {
+        VStack(spacing: 0){
+
+            
+            ZStack {
+                WebViewContainer(webViewModel: webViewModel)
+                if webViewModel.isLoading {
+                    ProgressView()
+                        .frame(height: 30)
+                }
             }
+            .navigationBarItems(leading: Button(action: {
+                webViewModel.shouldGoBack.toggle()
+            }, label: {
+                if webViewModel.canGoBack {
+                    Image(systemName: "arrow.left")
+                        .frame(width: 44, height: 44, alignment: .center)
+                        .foregroundColor(.black)
+                } else {
+                    EmptyView()
+                        .frame(width: 0, height: 0, alignment: .center)
+                }
+            })
+                                
+            )
         }
-        .navigationBarItems(leading: Button(action: {
-            webViewModel.shouldGoBack.toggle()
-        }, label: {
-            if webViewModel.canGoBack {
-                Image(systemName: "arrow.left")
-                    .frame(width: 44, height: 44, alignment: .center)
-                    .foregroundColor(.black)
-            } else {
-                EmptyView()
-                    .frame(width: 0, height: 0, alignment: .center)
-            }
-        })
-                            
-        )
+        
     }
+    
 }
 
-struct TrailerView_Previews: PreviewProvider {
+/*struct TrailerView_Previews: PreviewProvider {
     static var previews: some View {
         TrailerView()
     }
-}
+}*/

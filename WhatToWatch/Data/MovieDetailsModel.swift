@@ -31,6 +31,7 @@ class MovieDetailsModel: ObservableObject {
         }
     }
     
+    
     init(){
         //remotes = Remote(url: URL(string: getURL)!)
         //anyCancellable = remote.objectWillChange.sink(receiveValue: { [weak self] in

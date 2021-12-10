@@ -35,6 +35,9 @@ struct WatchListView: View {
     
     func delete(at offsets: IndexSet) {
         likedMoviesList.remove(atOffsets: offsets)
+        print(offsets)
+        
+       
     }
 }
 
