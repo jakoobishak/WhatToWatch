@@ -17,7 +17,7 @@ struct WatchListView: View {
         VStack(spacing: 0) {
             List{
                 if(!movieDetailsModel.remotes.isEmpty) {
-                    ForEach(likedMoviesList.indices) { i in
+                    ForEach(likedMoviesList.indices, id: \.self) { i in
                         if let movie = movieDetailsModel.remotes[i].data {
                             NavigationLink(destination: AdditionalInfoView(movie: movie)) {
                                 Text("\(movie.title)")
