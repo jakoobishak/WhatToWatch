@@ -7,11 +7,18 @@
 
 import SwiftUI
 
+
+
 struct AdditionalInfoView: View {
     
     var movie : MovieDetails
+    let objectToRemove = 0
+    
+    
     
     @StateObject var movieTrailerModel = MovieTrailerModel()
+    @AppStorage("likedMoviesList") var likedMoviesList = [Int]()
+    
     
     var body: some View {
         ScrollView {
@@ -53,22 +60,44 @@ struct AdditionalInfoView: View {
                 }
                 
                 Spacer()
-                
-                if let movieTrailer = movieTrailerModel.remote.data?.results{
-                    NavigationLink(destination: TrailerView(trailer: movieTrailer[0], webViewModel: WebViewModel(url: "https://www.youtube.com/embed/" + movieTrailer[0].key))) {
-                        Text("\(movieTrailer[0].name)")
-                        
-                    }
+                /*
+                 if let movieTrailer = movieTrailerModel.remote.data?.results{
+                 NavigationLink(destination: TrailerView(trailer: movieTrailer[0], webViewModel: WebViewModel(url: "https://www.youtube.com/embed/" + movieTrailer[0].key))) {
+                 Text("\(movieTrailer[0].name)")
+                 
+                 }
+                 
+                 }
+                 
+                 */
+            }
+        }
+        .toolbar {
+            /*
+             let objectToRemove = movie.id
+             likedMoviesList.remove(object: objectToRemove)
+             */
+            
+            Button(action: {
+                if likedMoviesList.contains(movie.id){
+                    likedMoviesList.removeAll(where: {$0 == movie.id})
+                } else{
+                    likedMoviesList.append(movie.id)
+                }
+            }, label: {
+                if likedMoviesList.contains(movie.id){
+                    Image(systemName: "heart.fill")
+                    
+                } else {
+                    Image(systemName: "heart")
                 }
                 
-                
-                
-            }
+            })
+            
         }
         .navigationTitle(movie.title)
         .onAppear{
             movieTrailerModel.getMovieTrailer(movieId: movie.id)
         }
-        
     }
 }
