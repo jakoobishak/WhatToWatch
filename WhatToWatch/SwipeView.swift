@@ -21,6 +21,7 @@ struct SwipeView: View {
     
     @State var showCover = false
     @State var nextMovie = false
+    @State var hasSaved: Bool = false
     
     @StateObject var genreModel = GenreModel()
     @StateObject var movieModel = MovieModel()
@@ -32,14 +33,15 @@ struct SwipeView: View {
     @AppStorage("likedMoviesList") var likedMoviesList = [Int]()
     @AppStorage("dislikedMoviesList") var dislikedMoviesList = [Int]()
     @AppStorage("counter") var counter = Int()
+    @AppStorage("genres") var genres = [String]()
+    @AppStorage("score") var score: String = "1"
     @Environment(\.managedObjectContext) var managedObjectContext
-    
-
     
     var body: some View {
         VStack(spacing: 0){
             
             if let movies = movieModel.remote.data?.results {
+                
                 
                 Spacer()
                 /*
@@ -61,57 +63,72 @@ struct SwipeView: View {
                                 
                                 Spacer()
                                 
-                                HStack{
-                                    VStack{
-                                        Text(movies[counter].title)
-                                            .frame(maxWidth: .infinity, alignment: .center)
-                                            .multilineTextAlignment(.center)
-                                            .padding(20)
+                                HStack {
+                                    VStack {
+                                        Section {
+                                            Text("Title:").bold().underline() + Text(" \(movies[counter].title)")
+                                        }
+                                        .frame(maxWidth: .infinity, alignment: .center)
+                                        .multilineTextAlignment(.center)
+                                        .padding()
                                         
-                                        Text("\(String(format: "%.1f", movies[counter].voteAverage))")
-                                            .frame(maxWidth: .infinity, alignment: .center)
-                                            .multilineTextAlignment(.center)
-                                            .padding(20)
+                                        Section {
+                                            Text("Average vote:").bold().underline() + Text(" \(String(format: "%.1f", movies[counter].voteAverage))")
+                                        }
+                                        .frame(maxWidth: .infinity, alignment: .center)
+                                        .multilineTextAlignment(.center)
+                                        .padding()
                                         
-                                        Text("\(movies[counter].voteCount)")
-                                            .frame(maxWidth: .infinity, alignment: .center)
-                                            .multilineTextAlignment(.center)
-                                            .padding(20)
+                                        Section {
+                                            Text("Vote count:").bold().underline() + Text(" \(movies[counter].voteCount)")
+                                        }
+                                        .frame(maxWidth: .infinity, alignment: .center)
+                                        .multilineTextAlignment(.center)
+                                        .padding()
                                         
-                                        Text(movies[counter].releaseDate)
-                                            .frame(maxWidth: .infinity, alignment: .center)
-                                            .multilineTextAlignment(.center)
-                                            .padding(20)
+                                        Section {
+                                            Text("Release date:").bold().underline() + Text(" \(movies[counter].releaseDate)")
+                                        }
+                                        .frame(maxWidth: .infinity, alignment: .center)
+                                        .multilineTextAlignment(.center)
+                                        .padding()
                                         
-                                        Text(movies[counter].overview)
-                                            .frame(maxWidth: .infinity, alignment: .center)
-                                            .multilineTextAlignment(.center)
-                                            .padding(20)
+                                        Section {
+                                            Text("Description:").bold().underline() + Text(" \(movies[counter].overview)")
+                                        }
+                                        .frame(maxWidth: .infinity, alignment: .center)
+                                        .multilineTextAlignment(.center)
+                                        .padding()
                                         
-                                        if let genres = genreModel.remote.data?.genres {
-                                            ForEach(movies[counter].genreIds, id: \.self){ movieId in
-                                                ForEach(genres) { genre in
-                                                    if(movieId == genre.id){
-                                                        Text(genre.name)
+                                        Section {
+                                            Text("Genres/categories:").bold().underline()
+                                            if let genres = genreModel.remote.data?.genres {
+                                                ForEach(movies[counter].genreIds, id: \.self){ movieId in
+                                                    ForEach(genres) { genre in
+                                                        if(movieId == genre.id){
+                                                            Text(genre.name)
+                                                        }
                                                     }
                                                 }
                                             }
                                         }
                                     }
                                     
-                                }.padding(20)
+                                }.padding()
                             }.frame(maxWidth: .infinity, maxHeight: .infinity).padding()
                             Spacer()
                         }
                     })
                 
                 Text(movies[counter].title)
+                    .font(Font.headline.weight(.bold))
+                    .underline()
                 
                 AsyncImage(url: URL(string: "https://www.themoviedb.org/t/p/w500" + (movies[counter].posterPath)), content: { image in
                     image.resizable()
                         .aspectRatio(contentMode: .fit)
                 }, placeholder: {ProgressView()})
-                    .frame(maxWidth: 500, maxHeight: 400)
+                    .frame(maxWidth: 400, maxHeight: 1000)
                     .padding()
                 
                 HStack{
@@ -164,9 +181,23 @@ struct SwipeView: View {
                 }
             }
         }
-        .onAppear{
-            movieModel.changeMoviesPage()
+        .onAppear {
+            if hasSaved == true {
+                movieModel.filterMovies(genres: genres, score: Int(score)!)
+            } else {
+                movieModel.changeMoviesPage()
+            }
+            
+        }
+        .toolbar {
+            
+            NavigationLink {
+                FilterView(hasSaved: $hasSaved)
+                    .navigationBarTitle("Filter")
+            } label: {
+                Image(systemName: "line.3.horizontal")
+            }
+            
         }
     }
-    
 }
