@@ -66,42 +66,42 @@ struct SwipeView: View {
                                 HStack {
                                     VStack {
                                         Section {
-                                            Text("Title:").bold().underline() + Text(" \(movies[counter].title)")
+                                            Text("Title:").bold() + Text(" \(movies[counter].title)")
                                         }
                                         .frame(maxWidth: .infinity, alignment: .center)
                                         .multilineTextAlignment(.center)
                                         .padding()
                                         
                                         Section {
-                                            Text("Average vote:").bold().underline() + Text(" \(String(format: "%.1f", movies[counter].voteAverage))")
+                                            Text("Average vote:").bold() + Text(" \(String(format: "%.1f", movies[counter].voteAverage))")
                                         }
                                         .frame(maxWidth: .infinity, alignment: .center)
                                         .multilineTextAlignment(.center)
                                         .padding()
                                         
                                         Section {
-                                            Text("Vote count:").bold().underline() + Text(" \(movies[counter].voteCount)")
+                                            Text("Vote count:").bold() + Text(" \(movies[counter].voteCount)")
                                         }
                                         .frame(maxWidth: .infinity, alignment: .center)
                                         .multilineTextAlignment(.center)
                                         .padding()
                                         
                                         Section {
-                                            Text("Release date:").bold().underline() + Text(" \(movies[counter].releaseDate)")
+                                            Text("Release date:").bold() + Text(" \(movies[counter].releaseDate)")
                                         }
                                         .frame(maxWidth: .infinity, alignment: .center)
                                         .multilineTextAlignment(.center)
                                         .padding()
                                         
                                         Section {
-                                            Text("Description:").bold().underline() + Text(" \(movies[counter].overview)")
+                                            Text("Description:").bold() + Text(" \(movies[counter].overview)")
                                         }
                                         .frame(maxWidth: .infinity, alignment: .center)
                                         .multilineTextAlignment(.center)
                                         .padding()
                                         
                                         Section {
-                                            Text("Genres/categories:").bold().underline()
+                                            Text("Genres/categories:").bold()
                                             if let genres = genreModel.remote.data?.genres {
                                                 ForEach(movies[counter].genreIds, id: \.self){ movieId in
                                                     ForEach(genres) { genre in

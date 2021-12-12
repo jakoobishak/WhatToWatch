@@ -23,42 +23,42 @@ struct AdditionalInfoView: View {
                     .frame(maxWidth: 500, maxHeight: 400)
                     .padding()
                 Section {
-                    Text("Title:").bold().underline() + Text(" \(movie.title)")
+                    Text("Title:").bold() + Text(" \(movie.title)")
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 .multilineTextAlignment(.center)
                 .padding(20)
                 
                 Section {
-                    Text("Average vote:").bold().underline() + Text(" \(String(format: "%.1f", movie.voteAverage))")
+                    Text("Average vote:").bold() + Text(" \(String(format: "%.1f", movie.voteAverage))")
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 .multilineTextAlignment(.center)
                 .padding(20)
                 
                 Section {
-                    Text("Vote count:").bold().underline() + Text(" \(movie.voteCount)")
+                    Text("Vote count:").bold() + Text(" \(movie.voteCount)")
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 .multilineTextAlignment(.center)
                 .padding(20)
                 
                 Section {
-                    Text("Release date:").bold().underline() + Text(" \(movie.releaseDate)")
+                    Text("Release date:").bold() + Text(" \(movie.releaseDate)")
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 .multilineTextAlignment(.center)
                 .padding(20)
                 
                 Section {
-                    Text("Description:").bold().underline() + Text(" \(movie.overview)")
+                    Text("Description:").bold() + Text(" \(movie.overview)")
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 .multilineTextAlignment(.center)
                 .padding(20)
                 
                 Section {
-                    Text("Genres/categories:").bold().underline()
+                    Text("Genres/categories:").bold()
                     ForEach(movie.genres, id: \.self) { genre in
                         Text("\(genre.name)")
                     }

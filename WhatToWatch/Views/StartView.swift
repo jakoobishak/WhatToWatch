@@ -22,7 +22,7 @@ struct StartView: View {
     var body: some View {
         NavigationView {
             VStack{
-                Text("Welcome to WhatToWatch - The app that has the answer to the most important question!")
+                Text("Welcome to WhatToWatch!")
                     .padding(.all)
                     .font(.system(size: 30))
 
