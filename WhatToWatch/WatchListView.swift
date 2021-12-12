@@ -19,8 +19,8 @@ struct WatchListView: View {
         VStack(spacing: 0) {
             List{
                 if(!movieDetailsModel.remotes.isEmpty) {
-                    ForEach(likedMoviesList.indices, id: \.self) { i in
-                        if let movie = movieDetailsModel.remotes[i].data {
+                    ForEach(Array(zip(likedMoviesList, likedMoviesList.indices)), id: \.0) { likedMovie, index in
+                        if let movie = movieDetailsModel.remotes[index].data {
                             NavigationLink(destination: AdditionalInfoView(movie: movie)) {
                                 Text("\(movie.title)")
                             }
@@ -37,9 +37,7 @@ struct WatchListView: View {
     
     func delete(at offsets: IndexSet) {
         likedMoviesList.remove(atOffsets: offsets)
-        print(offsets)
-        
-        
+        movieDetailsModel.remotes.remove(atOffsets: offsets)
     }
 }
 

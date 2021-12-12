@@ -13,23 +13,27 @@ struct TrashListView: View {
     
     var body: some View {
         VStack(spacing: 0){
-            List {
-                Section(header: Text("I don't want to watch these!")){
-                    if(!movieDetailsModel.remotes.isEmpty){
-                        ForEach(dislikedMoviesList.indices) { i in
-                            if let movie = movieDetailsModel.remotes[i].data{
-                                NavigationLink(destination: AdditionalInfoView(movie: movie)){
-                                    Text("\(movie.title)")
-                                }
+            List{
+                if(!movieDetailsModel.remotes.isEmpty) {
+                    ForEach(Array(zip(dislikedMoviesList, dislikedMoviesList.indices)), id: \.0) { dislikedMovie, index in
+                        if let movie = movieDetailsModel.remotes[index].data {
+                            NavigationLink(destination: AdditionalInfoView(movie: movie)) {
+                                Text("\(movie.title)")
                             }
                         }
                     }
+                    .onDelete(perform: delete)
                 }
             }
         }
         .onAppear {
             movieDetailsModel.getMovieDetails(movies: dislikedMoviesList)
         }
+    }
+    
+    func delete(at offsets: IndexSet) {
+        dislikedMoviesList.remove(atOffsets: offsets)
+        movieDetailsModel.remotes.remove(atOffsets: offsets)
     }
 }
 
