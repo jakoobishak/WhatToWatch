@@ -13,6 +13,8 @@ struct WatchListView: View {
     @AppStorage("likedMoviesList") var likedMoviesList = [Int]()
     
     
+    
+    
     var body: some View {
         VStack(spacing: 0) {
             List{
@@ -37,7 +39,7 @@ struct WatchListView: View {
         likedMoviesList.remove(atOffsets: offsets)
         print(offsets)
         
-       
+        
     }
 }
 
