@@ -10,6 +10,8 @@ import SwiftUI
 struct TrashListView: View {
     @StateObject var movieDetailsModel = MovieDetailsModel()
     @AppStorage("dislikedMoviesList") var dislikedMoviesList = [Int]()
+
+    @State private var showAlert = false
     
     var body: some View {
         VStack(spacing: 0){
@@ -28,6 +30,25 @@ struct TrashListView: View {
         }
         .onAppear {
             movieDetailsModel.getMovieDetails(movies: dislikedMoviesList)
+        }
+        .toolbar {
+        
+            Button {
+                showAlert = true
+            } label : {
+                Image(systemName: "trash")
+            }
+            .alert(isPresented: $showAlert){
+                Alert(
+                    title: Text("Empty the list?"),
+                    message: Text("Are you sure you want to empty your list?"),
+                    primaryButton: .destructive(Text("Yes")) {
+                        self.dislikedMoviesList.removeAll()
+                        self.movieDetailsModel.remotes.removeAll()
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
         }
     }
     

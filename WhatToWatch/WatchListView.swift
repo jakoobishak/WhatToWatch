@@ -12,7 +12,7 @@ struct WatchListView: View {
     @StateObject var movieDetailsModel = MovieDetailsModel()
     @AppStorage("likedMoviesList") var likedMoviesList = [Int]()
     
-    
+    @State private var showAlert = false
     
     
     var body: some View {
@@ -32,6 +32,25 @@ struct WatchListView: View {
         }
         .onAppear {
             movieDetailsModel.getMovieDetails(movies: likedMoviesList)
+        }
+        .toolbar {
+        
+            Button {
+                showAlert = true
+            } label : {
+                Image(systemName: "trash")
+            }
+            .alert(isPresented: $showAlert){
+                Alert(
+                    title: Text("Empty the list?"),
+                    message: Text("Are you sure you want to empty your list?"),
+                    primaryButton: .destructive(Text("Yes")) {
+                        self.likedMoviesList.removeAll()
+                        self.movieDetailsModel.remotes.removeAll()
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
         }
     }
     
