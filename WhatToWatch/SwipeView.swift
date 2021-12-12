@@ -21,6 +21,7 @@ struct SwipeView: View {
     
     @State var showCover = false
     @State var nextMovie = false
+    @State var hasSaved: Bool = false
     
     @StateObject var genreModel = GenreModel()
     @StateObject var movieModel = MovieModel()
@@ -32,15 +33,16 @@ struct SwipeView: View {
     @AppStorage("likedMoviesList") var likedMoviesList = [Int]()
     @AppStorage("dislikedMoviesList") var dislikedMoviesList = [Int]()
     @AppStorage("counter") var counter = Int()
+    @AppStorage("genres") var genres = [String]()
+    @AppStorage("score") var score: String = "1"
     @Environment(\.managedObjectContext) var managedObjectContext
-    
-
     
     var body: some View {
         VStack(spacing: 0){
             
             if let movies = movieModel.remote.data?.results {
-                
+        
+            
                 Spacer()
                 /*
                  Code inspiration regarding the implementation of the beneath function and button provided by https://www.youtube.com/watch?v=9lVLFlyaiq4
@@ -164,9 +166,23 @@ struct SwipeView: View {
                 }
             }
         }
-        .onAppear{
-            movieModel.changeMoviesPage()
+        .onAppear {
+            if hasSaved == true {
+                movieModel.filterMovies(genres: genres, score: Int(score)!)
+            } else {
+                movieModel.changeMoviesPage()
+            }
+            
+        }
+        .toolbar {
+            
+            NavigationLink {
+                FilterView(hasSaved: $hasSaved)
+                    .navigationBarTitle("Filter")
+            } label: {
+                Image(systemName: "line.3.horizontal")
+            }
+
         }
     }
-    
 }
