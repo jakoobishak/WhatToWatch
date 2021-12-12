@@ -31,7 +31,7 @@ struct MainView: View {
                     
                 case 0:
                     WatchListView()
-                        .navigationTitle("Watch list")
+                        //.navigationTitle("Watch list")
                 case 1:
                     SwipeView()
                         .navigationTitle("Lets Swipe!")
@@ -41,7 +41,7 @@ struct MainView: View {
                     
                 default:
                     WatchListView()
-                        .navigationTitle("Watch list")
+                        //.navigationTitle("Watch list")
                 }
             }
             

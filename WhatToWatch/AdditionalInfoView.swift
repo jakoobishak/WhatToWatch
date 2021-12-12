@@ -55,9 +55,10 @@ struct AdditionalInfoView: View {
                 Spacer()
                 
                 if let movieTrailer = movieTrailerModel.remote.data?.results{
-                    NavigationLink(destination: TrailerView(trailer: movieTrailer[0], webViewModel: WebViewModel(url: "https://www.youtube.com/embed/" + movieTrailer[0].key))) {
-                        Text("\(movieTrailer[0].name)")
-                        
+                    if !movieTrailer.isEmpty {
+                        NavigationLink(destination: TrailerView(trailer: movieTrailer[0], webViewModel: WebViewModel(url: "https://www.youtube.com/embed/" + movieTrailer[0].key))) {
+                            Text("\(movieTrailer[0].name)")
+                        }
                     }
                 }
                 
