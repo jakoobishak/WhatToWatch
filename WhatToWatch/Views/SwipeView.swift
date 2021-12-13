@@ -142,6 +142,33 @@ struct SwipeView: View {
                                 } else {
                                     likedMoviesList.append(movies[counter].id)
                                     counter += 1
+                                    
+                                    for i in likedMoviesList.indices {
+                                        if movies[counter].id == likedMoviesList[i] {
+                                            
+                                            if counter == 19 {
+                                                likedMoviesList.append(movies[counter].id)
+                                                movieModel.changeMoviesPage()
+                                                counter = 0
+                                            }
+                                            counter += 1
+                                            print(counter)
+                                        }
+                                    }
+                                    
+                                    for i in dislikedMoviesList.indices {
+                                        if movies[counter].id == dislikedMoviesList[i] {
+                                            
+                                            if counter == 19 {
+                                                dislikedMoviesList.append(movies[counter].id)
+                                                movieModel.changeMoviesPage()
+                                                counter = 0
+                                            }
+                                            counter += 1
+                                            print(counter)
+                                        }
+                                    }
+                                    
                                 }
                             }
                             if index == 1 {
@@ -157,6 +184,30 @@ struct SwipeView: View {
                                 } else {
                                     dislikedMoviesList.append(movies[counter].id)
                                     counter += 1
+                                    
+                                    for i in likedMoviesList.indices {
+                                        if movies[counter].id == likedMoviesList[i] {
+                                            
+                                            if counter == 19 {
+                                                likedMoviesList.append(movies[counter].id)
+                                                movieModel.changeMoviesPage()
+                                                counter = 0
+                                            }
+                                            counter += 1
+                                        }
+                                    }
+                                    
+                                    for i in dislikedMoviesList.indices {
+                                        if movies[counter].id == dislikedMoviesList[i] {
+                                            
+                                            if counter == 19 {
+                                                dislikedMoviesList.append(movies[counter].id)
+                                                movieModel.changeMoviesPage()
+                                                counter = 0
+                                            }
+                                            counter += 1
+                                        }
+                                    }
                                 }
                                 
                             }

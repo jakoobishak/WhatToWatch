@@ -9,7 +9,9 @@ import SwiftUI
 
 
 struct FilterView: View {
-
+    
+    @AppStorage("likedMoviesList") var likedMoviesList = [Int]()
+    @AppStorage("dislikedMoviesList") var dislikedMoviesList = [Int]()
     @AppStorage("action") var action = Bool()
     @AppStorage("adventure") var adventure = Bool()
     @AppStorage("animation") var animation = Bool()
@@ -43,8 +45,12 @@ struct FilterView: View {
                 Toggle("Animation", isOn: $animation).toggleStyle(SwitchToggleStyle(tint: Color.orange)).padding(.trailing, 30)
                 
                 Button {
+                    print(animation)
                     if(action == true){
-                        genres.append("18")
+                        if !genres.contains("18"){
+                            genres.append("18")
+                        }
+                        
                     } else {
                         if let index = genres.firstIndex(of: "18") {
                             genres.remove(at: index)
@@ -67,8 +73,32 @@ struct FilterView: View {
                     
                     movieModel.filterMovies(genres: genres, score: Int(score)!)
                     hasSaved = true
-                    pageCounter = 1
-                    counter = 0
+                    
+                    if let movies = movieModel.remote.data?.results {
+                        for i in likedMoviesList.indices {
+                            if movies[counter].id == likedMoviesList[i] {
+                                
+                                if counter == 19 {
+                                    likedMoviesList.append(movies[counter].id)
+                                    movieModel.changeMoviesPage()
+                                    counter = 0
+                                }
+                                counter += 1
+                            }
+                        }
+                        
+                        for i in dislikedMoviesList.indices {
+                            if movies[counter].id == dislikedMoviesList[i] {
+                                
+                                if counter == 19 {
+                                    dislikedMoviesList.append(movies[counter].id)
+                                    movieModel.changeMoviesPage()
+                                    counter = 0
+                                }
+                                counter += 1
+                            }
+                        }
+                    }
                     
                 } label: {
                     Text("Save changes")
@@ -77,12 +107,12 @@ struct FilterView: View {
                 .foregroundColor(Color.black)
                 .background(Color.green)
                 .cornerRadius(60)
-
+                
                 
             }
         }
         .padding()
         
     }
-        
+    
 }
