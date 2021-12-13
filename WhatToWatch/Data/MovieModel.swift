@@ -14,7 +14,7 @@ class MovieModel: ObservableObject {
     @AppStorage("counter") var counter = Int()
     
     var getURL = "https://api.themoviedb.org/3/discover/movie?api_key=646d70ab25d3bc369aa0ed0b2ed9e2d8&language=en-US&sort_by=popularity.desc&page=1"
-
+    
     private var cancellableTas: AnyCancellable?
     private var anyCancellable: AnyCancellable?
     
@@ -41,7 +41,11 @@ class MovieModel: ObservableObject {
         var allGenres = ""
         
         for genre in genres {
-            allGenres += genre + ","
+            if genre == genres.last {
+                allGenres += genre
+            } else {
+                allGenres += genre + ","
+            }
         }
         
         getURL = "https://api.themoviedb.org/3/discover/movie?api_key=646d70ab25d3bc369aa0ed0b2ed9e2d8&language=en-US&sort_by=popularity.desc&page=\(pageCounter)&with_genres=\(allGenres)&vote_average.gte=\(score)"
