@@ -125,6 +125,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		087C3C962766A65D000B5AB4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A1DFBEBB275230FA00DFCFCF /* Persistence.swift */,
+				088B087E2753D7F20011CACB /* WatchListView.swift */,
+				088B08842753D8EE0011CACB /* SwipeView.swift */,
+				0837FED827623CE700F5565A /* TrailerView.swift */,
+				088B08802753D8020011CACB /* TrashListView.swift */,
+				0898B8F32753C90300446BFA /* MainView.swift */,
+				088B08822753D81F0011CACB /* AdditionalInfoView.swift */,
+				A123CFB6276600FD002F630D /* FilterView.swift */,
+				088077B5275F745D001E27CD /* SceneDelegate.swift */,
+				A1DFBEB4275230F800DFCFCF /* StartView.swift */,
+				A1DFBEB2275230F800DFCFCF /* WhatToWatchApp.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		A1AED836275A325B0055D135 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,19 +177,8 @@
 			children = (
 				A1AED836275A325B0055D135 /* Extensions */,
 				A1DFBEE12752699B00DFCFCF /* Data */,
-				A1DFBEB2275230F800DFCFCF /* WhatToWatchApp.swift */,
-				A1DFBEB4275230F800DFCFCF /* StartView.swift */,
-				088077B5275F745D001E27CD /* SceneDelegate.swift */,
-				088B08822753D81F0011CACB /* AdditionalInfoView.swift */,
-				088B08802753D8020011CACB /* TrashListView.swift */,
-				0837FED827623CE700F5565A /* TrailerView.swift */,
-				088B08842753D8EE0011CACB /* SwipeView.swift */,
-				088B087E2753D7F20011CACB /* WatchListView.swift */,
-				0898B8F32753C90300446BFA /* MainView.swift */,
-				A123CFB6276600FD002F630D /* FilterView.swift */,
-				A1DFBEEB27527C7C00DFCFCF /* Remote.swift */,
+				087C3C962766A65D000B5AB4 /* Views */,
 				A1DFBEB6275230FA00DFCFCF /* Assets.xcassets */,
-				A1DFBEBB275230FA00DFCFCF /* Persistence.swift */,
 				A1DFBEBD275230FA00DFCFCF /* WhatToWatch.xcdatamodeld */,
 				A1DFBEB8275230FA00DFCFCF /* Preview Content */,
 			);
@@ -206,6 +213,7 @@
 		A1DFBEE12752699B00DFCFCF /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				A1DFBEEB27527C7C00DFCFCF /* Remote.swift */,
 				A1DFBEE2275269B600DFCFCF /* MovieSet.swift */,
 				A1DFBEE4275269C400DFCFCF /* Movie.swift */,
 				A1DFBEE6275269D600DFCFCF /* MovieModel.swift */,
@@ -543,7 +551,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WhatToWatch/Preview Content\"";
-				DEVELOPMENT_TEAM = 6E6JS63949;
+				DEVELOPMENT_TEAM = 3C4VZ8KHA2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -572,7 +580,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WhatToWatch/Preview Content\"";
-				DEVELOPMENT_TEAM = 6E6JS63949;
+				DEVELOPMENT_TEAM = 3C4VZ8KHA2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
