@@ -9,10 +9,10 @@ import SwiftUI
 
 
 struct FilterView: View {
-    
     @AppStorage("likedMoviesList") var likedMoviesList = [Int]()
     @AppStorage("dislikedMoviesList") var dislikedMoviesList = [Int]()
     
+    //genres/categories
     @AppStorage("action") var action = Bool()
     @AppStorage("adventure") var adventure = Bool()
     @AppStorage("animation") var animation = Bool()
@@ -68,6 +68,7 @@ struct FilterView: View {
                     Toggle("Fantasy", isOn: $fantasy).toggleStyle(SwitchToggleStyle(tint: Color.yellow)).padding(.trailing, 30)
                     Toggle("History", isOn: $history).toggleStyle(SwitchToggleStyle(tint: Color.indigo)).padding(.trailing, 30)
                 }
+                
                 Group {
                     Toggle("Horror", isOn: $horror).toggleStyle(SwitchToggleStyle(tint: Color.mint)).padding(.trailing, 30)
                     Toggle("Music", isOn: $music).toggleStyle(SwitchToggleStyle(tint: Color.teal)).padding(.trailing, 30)
@@ -80,12 +81,11 @@ struct FilterView: View {
                 }
                 
                 Button {
-
+                    
                     if(action == true){
                         if !genres.contains("28"){
                             genres.append("28")
                         }
-                        
                     } else {
                         if let index = genres.firstIndex(of: "28") {
                             genres.remove(at: index)
@@ -249,7 +249,6 @@ struct FilterView: View {
                     hasSavedFilter = true
                     
                     if let movies = movieModel.remote.data?.results {
-                        
                         for i in likedMoviesList.indices {
                             if movies[counter].id == likedMoviesList[i] {
                                 if counter == 19 {
@@ -270,7 +269,6 @@ struct FilterView: View {
                             }
                         }
                     }
-                    
                 } label: {
                     Text("Apply Changes")
                 }
@@ -278,12 +276,8 @@ struct FilterView: View {
                 .foregroundColor(Color.black)
                 .background(Color.green)
                 .cornerRadius(60)
-                
-                
             }
         }
         .padding()
-        
     }
-    
 }

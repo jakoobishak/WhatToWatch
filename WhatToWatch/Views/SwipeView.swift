@@ -14,13 +14,11 @@
 import SwiftUI
 
 struct SwipeView: View {
-    
     @State private var translation: CGSize = .zero
     @State var showCover = false
     
     @StateObject var genreModel = GenreModel()
     @StateObject var movieModel = MovieModel()
-    
     
     let buttonSymbols = ["hand.thumbsup.fill", "info.circle", "hand.thumbsdown.fill" ]
     let buttonColours = [Color.green, Color.purple, Color.red]
@@ -36,7 +34,6 @@ struct SwipeView: View {
     
     var body: some View {
         VStack(spacing: 0){
-            
             if let movies = movieModel.remote.data?.results {
                 if !movies.isEmpty {
                     
@@ -138,16 +135,10 @@ struct SwipeView: View {
                         .offset(x: self.translation.width, y: 0)
                         .rotationEffect(.degrees(Double(self.translation.width / geo.size.width) * 25), anchor: .bottom)
                         .gesture(
-                            
                             DragGesture()
-                            
                                 .onChanged { value in
                                     self.translation = value.translation
-                                    
                                 }
-                            
-                            
-                            //  && value.translation.height > -100 && value.translation.height < 100
                                 .onEnded { value in
                                     if value.translation.width < -235 {
                                         //left swipe
@@ -187,7 +178,7 @@ struct SwipeView: View {
                                         }
                                     }
                                     
-                                   else if value.translation.width > 235 {
+                                    else if value.translation.width > 235 {
                                         //right swipe
                                         if counter == 19 {
                                             dislikedMoviesList.append(movies[counter].id)
@@ -265,7 +256,6 @@ struct SwipeView: View {
                                                 print(counter)
                                             }
                                         }
-                                        
                                     }
                                 }
                                 if index == 1 {
@@ -310,10 +300,10 @@ struct SwipeView: View {
                                 }
                             }, label: {
                                 Spacer()
-                                    Image(systemName: buttonSymbols[index])
-                                        .font(.system(size: 35, weight: .bold))
-                                        .frame(height: 100)
-                                        .foregroundColor(buttonColours[index])
+                                Image(systemName: buttonSymbols[index])
+                                    .font(.system(size: 35, weight: .bold))
+                                    .frame(height: 100)
+                                    .foregroundColor(buttonColours[index])
                                 
                                 Spacer()
                                 
@@ -333,7 +323,6 @@ struct SwipeView: View {
             } else {
                 movieModel.changeMoviesPage()
             }
-            
         }
         .toolbar {
             
@@ -343,7 +332,6 @@ struct SwipeView: View {
             } label: {
                 Image(systemName: "list.bullet")
             }
-            
         }
     }
 }

@@ -17,18 +17,15 @@
 import SwiftUI
 
 struct MainView: View {
-    
     @State var selectedIndex = 1
     
     let tabBarImages = ["heart.fill", "hand.draw", "trash.fill"]
     let tabBarColours = [Color.red, Color.yellow, Color.blue]
     
     var body: some View {
-        
         VStack(spacing: 0){
             ZStack{
                 switch selectedIndex{
-                    
                 case 0:
                     WatchListView()
                         .navigationTitle("Watchlist")
@@ -38,7 +35,6 @@ struct MainView: View {
                 case 2:
                     TrashListView()
                         .navigationTitle("Trashlist")
-                    
                 default:
                     SwipeView()
                         .navigationTitle("Let's Swipe!")
@@ -53,7 +49,6 @@ struct MainView: View {
                     Button(action: {
                         selectedIndex = index
                         if index == 0 {
-                            
                         }
                     }, label: {
                         Spacer()

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AdditionalInfoView: View {
-    
     var movie : MovieDetails
     
     @StateObject var movieTrailerModel = MovieTrailerModel()
@@ -76,13 +75,11 @@ struct AdditionalInfoView: View {
                     }
                 }
                 .padding()
-                
             }
         }
         .navigationTitle(movie.title)
         .onAppear{
             movieTrailerModel.getMovieTrailer(movieId: movie.id)
         }
-        
     }
 }

@@ -10,15 +10,13 @@ import Combine
 import SwiftUI
 
 class Remote<ResultData>: ObservableObject {
-    
     private var cancellableTask: AnyCancellable?
-    
-    @Published var isLoading = false
-    @Published var data: ResultData?
-    
     
     let url: URL
     let decode: (Data) throws -> ResultData
+    
+    @Published var isLoading = false
+    @Published var data: ResultData?
     
     init(url: URL, decode: @escaping (Data) throws -> ResultData) {
         self.url = url
@@ -50,14 +48,11 @@ class Remote<ResultData>: ObservableObject {
 }
 
 extension Remote where ResultData: Decodable {
-    
     convenience init(url: URL) {
         self.init(url: url) { data in
             let jsonDecoder = JSONDecoder()
             jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
             return try jsonDecoder.decode(ResultData.self, from: data)
-            
         }
     }
-    
 }

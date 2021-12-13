@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct WatchListView: View {
-    
     @StateObject var movieDetailsModel = MovieDetailsModel()
+    
     @AppStorage("likedMoviesList") var likedMoviesList = [Int]()
     
     @State private var showAlert = false
-    
     
     var body: some View {
         VStack(spacing: 0) {
@@ -34,7 +33,6 @@ struct WatchListView: View {
             movieDetailsModel.getMovieDetails(movies: likedMoviesList)
         }
         .toolbar {
-        
             Button {
                 showAlert = true
             } label : {
