@@ -18,6 +18,8 @@ import SwiftUI
 
 struct SwipeView: View {
     
+    @State private var translation: CGSize = .zero
+    
     
     @State var showCover = false
     @State var nextMovie = false
@@ -46,7 +48,7 @@ struct SwipeView: View {
                     
                     Spacer()
                     /*
-                     Code inspiration regarding the implementation of the beneath function and button provided (fullscreencover) https://www.youtube.com/watch?v=9lVLFlyaiq4
+                     Code inspiration regarding the implementation of .fullScreenCover provided by https://www.youtube.com/watch?v=9lVLFlyaiq4
                      */
                         .fullScreenCover(isPresented: $showCover, content: {
                             ScrollView{
@@ -125,13 +127,31 @@ struct SwipeView: View {
                         .font(Font.headline.weight(.bold))
                         .underline()
                     
+                    GeometryReader { geo in
+                        VStack {
+                            AsyncImage(url: URL(string: "https://www.themoviedb.org/t/p/w500" + (movies[counter].posterPath)), content: { image in
+                                image.resizable()
+                                    .aspectRatio(contentMode: .fit)
+                            }, placeholder: {ProgressView()})
+                                .frame(maxWidth: 400, maxHeight: 1000)
+                                .padding()
+                        }
+                        .shadow(radius: 5)
+                        .animation(.interactiveSpring(), value: 1)
+                        .offset(x: self.translation.width, y: 0)
+                        .rotationEffect(.degrees(Double(self.translation.width / geo.size.width) * 25), anchor: .bottom)
+                        .gesture(
+                            
+                            DragGesture()
+                            
+                                .onChanged { value in
+                                    self.translation = value.translation
+                                }.onEnded { value in
+                                    self.translation = .zero
+                                }
+                        )
+                    }
                     
-                    AsyncImage(url: URL(string: "https://www.themoviedb.org/t/p/w500" + (movies[counter].posterPath)), content: { image in
-                        image.resizable()
-                            .aspectRatio(contentMode: .fit)
-                    }, placeholder: {ProgressView()})
-                        .frame(maxWidth: 400, maxHeight: 1000)
-                        .padding()
                     
                     HStack{
                         ForEach(0..<3){ index in
