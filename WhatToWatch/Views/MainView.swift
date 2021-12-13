@@ -20,7 +20,7 @@ struct MainView: View {
     
     @State var selectedIndex = 1
     
-    let tabBarImages = ["heart.rectangle", "hand.draw", "trash.square"]
+    let tabBarImages = ["heart.fill", "hand.draw", "trash.fill"]
     let tabBarColours = [Color.red, Color.yellow, Color.blue]
     
     var body: some View {
@@ -59,11 +59,11 @@ struct MainView: View {
                         Spacer()
                         if index == 1{
                             Image(systemName: tabBarImages[index])
-                                .font(.system(size: 50, weight: .bold))
+                                .font(.system(size: 45, weight: .bold))
                                 .foregroundColor(selectedIndex == index ? tabBarColours[index] : .init(white: 0.8))
                         } else {
                             Image(systemName: tabBarImages[index])
-                                .font(.system(size: 30, weight: .bold))
+                                .font(.system(size: 25, weight: .bold))
                                 .foregroundColor(selectedIndex == index ? tabBarColours[index] : .init(white: 0.8))
                         }
                         Spacer()

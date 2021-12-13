@@ -22,8 +22,8 @@ struct SwipeView: View {
     @StateObject var movieModel = MovieModel()
     
     
-    let buttonSymbols = ["hand.thumbsup.fill", "arrow.up.circle", "hand.thumbsdown.fill" ]
-    let buttonColours = [Color.green, Color.orange, Color.red]
+    let buttonSymbols = ["hand.thumbsup.fill", "info.circle", "hand.thumbsdown.fill" ]
+    let buttonColours = [Color.green, Color.purple, Color.red]
     
     @AppStorage("likedMoviesList") var likedMoviesList = [Int]()
     @AppStorage("dislikedMoviesList") var dislikedMoviesList = [Int]()
@@ -310,17 +310,10 @@ struct SwipeView: View {
                                 }
                             }, label: {
                                 Spacer()
-                                if index == 1{
                                     Image(systemName: buttonSymbols[index])
-                                        .font(.system(size: 120, weight: .bold))
-                                        .frame(height: 200)
+                                        .font(.system(size: 40, weight: .bold))
+                                        .frame(height: 100)
                                         .foregroundColor(buttonColours[index])
-                                } else {
-                                    Image(systemName: buttonSymbols[index])
-                                        .font(.system(size: 50, weight: .bold))
-                                        .frame(height: 200)
-                                        .foregroundColor(buttonColours[index])
-                                }
                                 
                                 Spacer()
                                 
@@ -348,7 +341,7 @@ struct SwipeView: View {
                 FilterView()
                     .navigationBarTitle("Filter")
             } label: {
-                Image(systemName: "line.3.horizontal")
+                Image(systemName: "list.bullet")
             }
             
         }
