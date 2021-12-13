@@ -7,11 +7,18 @@
 
 import SwiftUI
 
+
+
 struct AdditionalInfoView: View {
     
     var movie : MovieDetails
+    let objectToRemove = 0
+    
+    
     
     @StateObject var movieTrailerModel = MovieTrailerModel()
+    @AppStorage("likedMoviesList") var likedMoviesList = [Int]()
+    
     
     var body: some View {
         ScrollView {
@@ -61,15 +68,11 @@ struct AdditionalInfoView: View {
                         }
                     }
                 }
-                
-                
-                
+            }
+            .navigationTitle(movie.title)
+            .onAppear{
+                movieTrailerModel.getMovieTrailer(movieId: movie.id)
             }
         }
-        .navigationTitle(movie.title)
-        .onAppear{
-            movieTrailerModel.getMovieTrailer(movieId: movie.id)
-        }
-        
     }
 }
