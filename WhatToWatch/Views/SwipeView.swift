@@ -8,10 +8,7 @@
 
 
 /*
- 
  Code inspiration regarding the overall design and layout provided by https://www.youtube.com/watch?v=9lVLFlyaiq4
- 
- 
  */
 
 import SwiftUI
@@ -19,10 +16,7 @@ import SwiftUI
 struct SwipeView: View {
     
     @State private var translation: CGSize = .zero
-    
-    
     @State var showCover = false
-    @State var nextMovie = false
     
     @StateObject var genreModel = GenreModel()
     @StateObject var movieModel = MovieModel()
@@ -127,6 +121,9 @@ struct SwipeView: View {
                         .font(Font.headline.weight(.bold))
                         .underline()
                     
+                    /*
+                     Code inspiration regarding the implementation of the GeometryReader provided by https://betterprogramming.pub/swiftui-create-a-tinder-style-swipeable-card-view-283e257cb102
+                     */
                     GeometryReader { geo in
                         VStack {
                             AsyncImage(url: URL(string: "https://www.themoviedb.org/t/p/w500" + (movies[counter].posterPath)), content: { image in
@@ -137,21 +134,96 @@ struct SwipeView: View {
                                 .padding()
                         }
                         .shadow(radius: 5)
-                        .animation(.interactiveSpring(), value: 1)
+                        .animation(.interactiveSpring(), value: 10)
                         .offset(x: self.translation.width, y: 0)
                         .rotationEffect(.degrees(Double(self.translation.width / geo.size.width) * 25), anchor: .bottom)
                         .gesture(
                             
-                            DragGesture()
+                            DragGesture(minimumDistance: 1, coordinateSpace: .global)
                             
                                 .onChanged { value in
                                     self.translation = value.translation
-                                }.onEnded { value in
+                                    
+                                }
+                                .onEnded { value in
+                                    if value.translation.width < 0 && value.translation.height > -30 && value.translation.height < 30 {
+                                        //left swipe
+                                        if counter == 19 {
+                                            likedMoviesList.append(movies[counter].id)
+                                            movieModel.changeMoviesPage()
+                                            counter = 0
+                                        } else {
+                                            likedMoviesList.append(movies[counter].id)
+                                            counter += 1
+                                            
+                                            for i in likedMoviesList.indices {
+                                                if movies[counter].id == likedMoviesList[i] {
+                                                    
+                                                    if counter == 19 {
+                                                        likedMoviesList.append(movies[counter].id)
+                                                        movieModel.changeMoviesPage()
+                                                        counter = 0
+                                                    }
+                                                    counter += 1
+                                                    print(counter)
+                                                }
+                                            }
+                                            
+                                            for i in dislikedMoviesList.indices {
+                                                if movies[counter].id == dislikedMoviesList[i] {
+                                                    
+                                                    if counter == 19 {
+                                                        dislikedMoviesList.append(movies[counter].id)
+                                                        movieModel.changeMoviesPage()
+                                                        counter = 0
+                                                    }
+                                                    counter += 1
+                                                    print(counter)
+                                                }
+                                            }
+                                        }
+                                    }
+                                    
+                                   else if value.translation.width > 0 && value.translation.height > -30 && value.translation.height < 30 {
+                                        //right swipe
+                                        if counter == 19 {
+                                            dislikedMoviesList.append(movies[counter].id)
+                                            movieModel.changeMoviesPage()
+                                            counter = 0
+                                        } else {
+                                            dislikedMoviesList.append(movies[counter].id)
+                                            counter += 1
+                                            
+                                            for i in likedMoviesList.indices {
+                                                if movies[counter].id == likedMoviesList[i] {
+                                                    
+                                                    if counter == 19 {
+                                                        likedMoviesList.append(movies[counter].id)
+                                                        movieModel.changeMoviesPage()
+                                                        counter = 0
+                                                    }
+                                                    counter += 1
+                                                }
+                                            }
+                                            
+                                            for i in dislikedMoviesList.indices {
+                                                if movies[counter].id == dislikedMoviesList[i] {
+                                                    
+                                                    if counter == 19 {
+                                                        dislikedMoviesList.append(movies[counter].id)
+                                                        movieModel.changeMoviesPage()
+                                                        counter = 0
+                                                    }
+                                                    counter += 1
+                                                }
+                                            }
+                                        }
+                                    }
+                                    //resets position upon either like or dislike
                                     self.translation = .zero
                                 }
                         )
                     }
-                    
                     
                     HStack{
                         ForEach(0..<3){ index in
