@@ -8,19 +8,12 @@
 import SwiftUI
 
 struct TrailerView: View {
-    
-    
-    
     var trailer : MovieTrailer
     
-   
-        
     @ObservedObject var webViewModel : WebViewModel
     
     var body: some View {
-        VStack(spacing: 0){
-
-            
+        VStack(spacing: 0) {
             ZStack {
                 WebViewContainer(webViewModel: webViewModel)
                 if webViewModel.isLoading {
@@ -42,14 +35,8 @@ struct TrailerView: View {
             })
                                 
             )
-        }
-        
+        }        
     }
     
 }
 
-/*struct TrailerView_Previews: PreviewProvider {
-    static var previews: some View {
-        TrailerView()
-    }
-}*/

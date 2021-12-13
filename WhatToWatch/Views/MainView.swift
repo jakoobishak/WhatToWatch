@@ -31,17 +31,17 @@ struct MainView: View {
                     
                 case 0:
                     WatchListView()
-                        //.navigationTitle("Watch list")
+                        .navigationTitle("Watchlist")
                 case 1:
                     SwipeView()
-                        .navigationTitle("Lets Swipe!")
+                        .navigationTitle("Let's Swipe!")
                 case 2:
                     TrashListView()
-                        .navigationTitle("The trash list")
+                        .navigationTitle("Trashlist")
                     
                 default:
-                    WatchListView()
-                        //.navigationTitle("Watch list")
+                    SwipeView()
+                        .navigationTitle("Let's Swipe!")
                 }
             }
             
@@ -71,6 +71,6 @@ struct MainView: View {
                 }
             }
         }
-        //.navigationBarBackButtonHidden(true)
+        .navigationBarBackButtonHidden(true)
     }
 }
