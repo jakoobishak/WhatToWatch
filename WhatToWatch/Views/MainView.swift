@@ -59,11 +59,11 @@ struct MainView: View {
                         Spacer()
                         if index == 1{
                             Image(systemName: tabBarImages[index])
-                                .font(.system(size: 45, weight: .bold))
+                                .font(.system(size: 40, weight: .bold))
                                 .foregroundColor(selectedIndex == index ? tabBarColours[index] : .init(white: 0.8))
                         } else {
                             Image(systemName: tabBarImages[index])
-                                .font(.system(size: 25, weight: .bold))
+                                .font(.system(size: 20, weight: .bold))
                                 .foregroundColor(selectedIndex == index ? tabBarColours[index] : .init(white: 0.8))
                         }
                         Spacer()

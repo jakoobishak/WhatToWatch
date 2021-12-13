@@ -311,7 +311,7 @@ struct SwipeView: View {
                             }, label: {
                                 Spacer()
                                     Image(systemName: buttonSymbols[index])
-                                        .font(.system(size: 40, weight: .bold))
+                                        .font(.system(size: 35, weight: .bold))
                                         .frame(height: 100)
                                         .foregroundColor(buttonColours[index])
                                 
