@@ -145,8 +145,11 @@ struct SwipeView: View {
                                     self.translation = value.translation
                                     
                                 }
+                            
+                            
+                            //  && value.translation.height > -100 && value.translation.height < 100
                                 .onEnded { value in
-                                    if value.translation.width < 0 && value.translation.height > -30 && value.translation.height < 30 {
+                                    if value.translation.width < -225 {
                                         //left swipe
                                         if counter == 19 {
                                             likedMoviesList.append(movies[counter].id)
@@ -184,7 +187,7 @@ struct SwipeView: View {
                                         }
                                     }
                                     
-                                   else if value.translation.width > 0 && value.translation.height > -30 && value.translation.height < 30 {
+                                   else if value.translation.width > 225 {
                                         //right swipe
                                         if counter == 19 {
                                             dislikedMoviesList.append(movies[counter].id)
