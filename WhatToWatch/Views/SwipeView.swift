@@ -139,7 +139,7 @@ struct SwipeView: View {
                         .rotationEffect(.degrees(Double(self.translation.width / geo.size.width) * 25), anchor: .bottom)
                         .gesture(
                             
-                            DragGesture(minimumDistance: 1, coordinateSpace: .global)
+                            DragGesture()
                             
                                 .onChanged { value in
                                     self.translation = value.translation
@@ -149,7 +149,7 @@ struct SwipeView: View {
                             
                             //  && value.translation.height > -100 && value.translation.height < 100
                                 .onEnded { value in
-                                    if value.translation.width < -225 {
+                                    if value.translation.width < -235 {
                                         //left swipe
                                         if counter == 19 {
                                             likedMoviesList.append(movies[counter].id)
@@ -187,7 +187,7 @@ struct SwipeView: View {
                                         }
                                     }
                                     
-                                   else if value.translation.width > 225 {
+                                   else if value.translation.width > 235 {
                                         //right swipe
                                         if counter == 19 {
                                             dislikedMoviesList.append(movies[counter].id)
