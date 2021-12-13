@@ -5,7 +5,7 @@
 //  Created by Jakoob Ishak on 2021-12-09.
 //
 
-// Code borrowed from https://blog.devgenius.io/webviews-in-swiftui-d5b1229e37ba
+// Code inspiration provided by https://blog.devgenius.io/webviews-in-swiftui-d5b1229e37ba
 
 import Foundation
 import SwiftUI

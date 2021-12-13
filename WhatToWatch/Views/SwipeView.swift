@@ -213,7 +213,6 @@ struct SwipeView: View {
                                             }
                                         }
                                     }
-                                    //resets position upon either like or dislike
                                     self.translation = .zero
                                 }
                         )

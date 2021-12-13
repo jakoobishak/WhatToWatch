@@ -7,10 +7,7 @@
 
 
 /*
- 
  Code inspiration regarding the overall design and layout provided by https://www.youtube.com/watch?v=9lVLFlyaiq4
- 
- 
  */
 
 
