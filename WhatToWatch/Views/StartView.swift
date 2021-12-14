@@ -22,23 +22,21 @@ struct StartView: View {
     var body: some View {
         NavigationView {
             VStack{
-                Text("Welcome to WhatToWatch!")
+                Text("WhatToWatch")
                     .padding(.all)
                     .font(.system(size: 30))
-
-
-                    
+                Spacer()
                 Image("movie_image")
+                Spacer()
                 NavigationLink {
                     MainView()
                 } label: {
                     Text("Start swiping")
                 }
                 .padding()
-                .background(Color.green)
+                .background(Color.red)
                 .foregroundColor(Color.black)
-                .cornerRadius(50)
-                .font(.largeTitle)
+                .cornerRadius(30)
             }
         }
     }
