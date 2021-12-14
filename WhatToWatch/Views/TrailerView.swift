@@ -33,10 +33,8 @@ struct TrailerView: View {
                         .frame(width: 0, height: 0, alignment: .center)
                 }
             })
-                                
             )
         }        
     }
-    
 }
 

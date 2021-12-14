@@ -9,4 +9,5 @@ import Foundation
 
 struct MovieSet: Decodable {
     let results: [Movie]
+    let totalResults: Int
 }

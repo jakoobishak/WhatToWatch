@@ -9,8 +9,9 @@ import SwiftUI
 
 struct TrashListView: View {
     @StateObject var movieDetailsModel = MovieDetailsModel()
+    
     @AppStorage("dislikedMoviesList") var dislikedMoviesList = [Int]()
-
+    
     @State private var showAlert = false
     
     var body: some View {
@@ -32,7 +33,7 @@ struct TrashListView: View {
             movieDetailsModel.getMovieDetails(movies: dislikedMoviesList)
         }
         .toolbar {
-        
+            
             Button {
                 showAlert = true
             } label : {

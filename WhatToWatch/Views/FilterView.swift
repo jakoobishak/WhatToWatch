@@ -9,10 +9,10 @@ import SwiftUI
 
 
 struct FilterView: View {
-    
     @AppStorage("likedMoviesList") var likedMoviesList = [Int]()
     @AppStorage("dislikedMoviesList") var dislikedMoviesList = [Int]()
     
+    //genres/categories
     @AppStorage("action") var action = Bool()
     @AppStorage("adventure") var adventure = Bool()
     @AppStorage("animation") var animation = Bool()
@@ -40,6 +40,9 @@ struct FilterView: View {
     
     
     @StateObject var movieModel = MovieModel()
+    
+    @State var filterChanged = false
+    @State var totalMovies = 20
     
     var allScores = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
     
@@ -79,13 +82,12 @@ struct FilterView: View {
                     Toggle("Western", isOn: $western).toggleStyle(SwitchToggleStyle(tint: Color.yellow)).padding(.trailing, 30)
                 }
                 
+                
                 Button {
-
                     if(action == true){
                         if !genres.contains("28"){
                             genres.append("28")
                         }
-                        
                     } else {
                         if let index = genres.firstIndex(of: "28") {
                             genres.remove(at: index)
@@ -245,15 +247,10 @@ struct FilterView: View {
                         }
                     }
                     
-                    
-                    hasSavedFilter = true
-                    
                     if let movies = movieModel.remote.data?.results {
-                        
                         for i in likedMoviesList.indices {
                             if movies[counter].id == likedMoviesList[i] {
                                 if counter == 19 {
-                                    movieModel.filterMovies(genres: genres, score: Int(score)!)
                                     counter = 0
                                 }
                                 counter += 1
@@ -263,13 +260,14 @@ struct FilterView: View {
                         for i in dislikedMoviesList.indices {
                             if movies[counter].id == dislikedMoviesList[i] {
                                 if counter == 19 {
-                                    movieModel.filterMovies(genres: genres, score: Int(score)!)
                                     counter = 0
                                 }
                                 counter += 1
                             }
                         }
                     }
+                        
+                    hasSavedFilter = true
                     
                 } label: {
                     Text("Apply Changes")
@@ -278,12 +276,8 @@ struct FilterView: View {
                 .foregroundColor(Color.black)
                 .background(Color.green)
                 .cornerRadius(60)
-                
-                
             }
         }
         .padding()
-        
     }
-    
 }

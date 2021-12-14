@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AdditionalInfoView: View {
-    
     var movie : MovieDetails
     
     @StateObject var movieTrailerModel = MovieTrailerModel()
@@ -16,12 +15,24 @@ struct AdditionalInfoView: View {
     var body: some View {
         ScrollView {
             VStack {
-                AsyncImage(url: URL(string: "https://www.themoviedb.org/t/p/w500" + (movie.posterPath)), content: { image in
-                    image.resizable()
-                        .aspectRatio(contentMode: .fit)
-                }, placeholder: {ProgressView()})
-                    .frame(maxWidth: 500, maxHeight: 400)
-                    .padding()
+                if movie.posterPath == nil {
+                    AsyncImage(url: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"), content: { image in
+                        image.resizable()
+                            .aspectRatio(contentMode: .fit)
+                    }, placeholder: {ProgressView()})
+                        .frame(maxWidth: 500, maxHeight: 400)
+                        .padding()
+                  
+                } else {
+                    AsyncImage(url: URL(string: "https://www.themoviedb.org/t/p/w500" + (movie.posterPath)!), content: { image in
+                        image.resizable()
+                            .aspectRatio(contentMode: .fit)
+                    }, placeholder: {ProgressView()})
+                        .frame(maxWidth: 500, maxHeight: 400)
+                        .padding()
+                }
+                
+                
                 Section {
                     Text("Title:").bold() + Text(" \(movie.title)")
                 }
@@ -76,13 +87,11 @@ struct AdditionalInfoView: View {
                     }
                 }
                 .padding()
-                
             }
         }
         .navigationTitle(movie.title)
         .onAppear{
             movieTrailerModel.getMovieTrailer(movieId: movie.id)
         }
-        
     }
 }

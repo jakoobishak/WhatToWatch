@@ -9,16 +9,16 @@ import Combine
 import SwiftUI
 
 class MovieModel: ObservableObject {
-    
     @AppStorage("pageCounter") var pageCounter: Int = 1
     @AppStorage("counter") var counter = Int()
     
     var getURL = "https://api.themoviedb.org/3/discover/movie?api_key=646d70ab25d3bc369aa0ed0b2ed9e2d8&language=en-US&sort_by=popularity.desc&page=1"
+
+    var remote: Remote<MovieSet>
+
     
     private var cancellableTas: AnyCancellable?
     private var anyCancellable: AnyCancellable?
-    
-    var remote: Remote<MovieSet>
     
     func changeMoviesPage() {
         if counter == 19{

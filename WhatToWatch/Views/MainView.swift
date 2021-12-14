@@ -7,28 +7,22 @@
 
 
 /*
- 
  Code inspiration regarding the overall design and layout provided by https://www.youtube.com/watch?v=9lVLFlyaiq4
- 
- 
  */
 
 
 import SwiftUI
 
 struct MainView: View {
-    
     @State var selectedIndex = 1
     
-    let tabBarImages = ["heart.rectangle", "hand.draw", "trash.square"]
+    let tabBarImages = ["heart.fill", "hand.draw", "trash.fill"]
     let tabBarColours = [Color.red, Color.yellow, Color.blue]
     
     var body: some View {
-        
         VStack(spacing: 0){
             ZStack{
                 switch selectedIndex{
-                    
                 case 0:
                     WatchListView()
                         .navigationTitle("Watchlist")
@@ -38,7 +32,6 @@ struct MainView: View {
                 case 2:
                     TrashListView()
                         .navigationTitle("Trashlist")
-                    
                 default:
                     SwipeView()
                         .navigationTitle("Let's Swipe!")
@@ -53,17 +46,16 @@ struct MainView: View {
                     Button(action: {
                         selectedIndex = index
                         if index == 0 {
-                            
                         }
                     }, label: {
                         Spacer()
                         if index == 1{
                             Image(systemName: tabBarImages[index])
-                                .font(.system(size: 50, weight: .bold))
+                                .font(.system(size: 40, weight: .bold))
                                 .foregroundColor(selectedIndex == index ? tabBarColours[index] : .init(white: 0.8))
                         } else {
                             Image(systemName: tabBarImages[index])
-                                .font(.system(size: 30, weight: .bold))
+                                .font(.system(size: 20, weight: .bold))
                                 .foregroundColor(selectedIndex == index ? tabBarColours[index] : .init(white: 0.8))
                         }
                         Spacer()

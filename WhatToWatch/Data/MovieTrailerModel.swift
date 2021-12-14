@@ -10,18 +10,16 @@ import Combine
 import SwiftUI
 
 class MovieTrailerModel: ObservableObject {
-    
     @AppStorage("pageCounter") var pageCounter: Int = 1
     @AppStorage("counter") var counter = Int()
     
     //https://www.youtube.com/embed/
     
     var getURL = "https://api.themoviedb.org/3/movie/223/videos?api_key=646d70ab25d3bc369aa0ed0b2ed9e2d8&language=en-US"
+    var remote: Remote<MovieTrailerSet>
     
     private var cancellableTas: AnyCancellable?
     private var anyCancellable: AnyCancellable?
-    
-    var remote: Remote<MovieTrailerSet>
     
     func getMovieTrailer(movieId: Int) {
         
