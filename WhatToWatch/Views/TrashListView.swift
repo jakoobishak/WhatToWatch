@@ -38,7 +38,7 @@ struct TrashListView: View {
             } label : {
                 Image(systemName: "trash")
             }
-            .alert(isPresented: $showAlert){
+            .alert(isPresented: $showAlert) {
                 Alert(
                     title: Text("Empty the list?"),
                     message: Text("Are you sure you want to empty your list?"),
