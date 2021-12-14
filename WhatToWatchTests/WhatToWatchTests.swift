@@ -10,24 +10,50 @@ import XCTest
 
 class WhatToWatchTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testMovie() throws {
+        let movie = Movie(id: 10, title: "Spider-man", overview: "He sucks", posterPath: "/posterPath.png", releaseDate: "2001-01-01", voteAverage: 8.2, voteCount: 2000, genreIds: [2,4])
+        
+        XCTAssertEqual(movie.title, "Spider-man")
+        XCTAssertEqual(movie.id, 10)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testDislikeMovieList() throws {
+        let movie1 = Movie(id: 10, title: "Spider-man", overview: "He sucks", posterPath: "/posterPath.png", releaseDate: "2001-01-01", voteAverage: 8.2, voteCount: 2000, genreIds: [2,4])
+        let movie2 = Movie(id: 12, title: "Bat-man", overview: "Hes the best", posterPath: "/posterPath123.png", releaseDate: "2002-02-02", voteAverage: 7.9, voteCount: 3000, genreIds: [2,4,5])
+        
+        let trashListView = TrashListView()
+        trashListView.dislikedMoviesList.append(movie1.id)
+        trashListView.dislikedMoviesList.append(movie2.id)
+        
+        var listCount = 0
+        
+        for _ in trashListView.dislikedMoviesList.indices {
+            listCount += 1
         }
+        
+        XCTAssertEqual(trashListView.dislikedMoviesList.count, listCount)
+        
+        
     }
 
+    func testRemovingFromLikedMoviesList() throws {
+        let movie1 = Movie(id: 10, title: "Spider-man", overview: "He sucks", posterPath: "/posterPath.png", releaseDate: "2001-01-01", voteAverage: 8.2, voteCount: 2000, genreIds: [2,4])
+        let movie2 = Movie(id: 12, title: "Bat-man", overview: "Hes the best", posterPath: "/posterPath123.png", releaseDate: "2002-02-02", voteAverage: 7.9, voteCount: 3000, genreIds: [2,4,5])
+        
+        let watchListView = WatchListView()
+        watchListView.likedMoviesList.append(movie1.id)
+        watchListView.likedMoviesList.append(movie2.id)
+        
+        watchListView.likedMoviesList.removeAll()
+        
+        XCTAssertEqual(watchListView.likedMoviesList.count, 0)
+    }
+    
+    func testIfFilterUrlIsCorrect() throws {
+        let genreType1 = genreTypes(id: 25, name: "Comedy")
+        let genreType2 = genreTypes(id: 35, name: "Action")
+        let movieDetails = MovieDetails(id: 11, title: "Inception", overview: "Good movie", posterPath: "/posterPath.png", releaseDate: "2002-02-02", voteAverage: 7.1, voteCount: 2323, genres: [genreType1, genreType2])
+        
+        XCTAssertEqual(movieDetails.genres[1].name, "Action")
+    }
 }
