@@ -164,7 +164,6 @@ struct SwipeView: View {
                                                                     counter = 0
                                                                 }
                                                                 counter += 1
-                                                                print(counter)
                                                             }
                                                         }
                                                         
@@ -177,7 +176,6 @@ struct SwipeView: View {
                                                                     counter = 0
                                                                 }
                                                                 counter += 1
-                                                                print(counter)
                                                             }
                                                         }
                                                     }
@@ -261,7 +259,6 @@ struct SwipeView: View {
                                                                     counter = 0
                                                                 }
                                                                 counter += 1
-                                                                print(counter)
                                                             }
                                                         }
                                                         
@@ -274,7 +271,6 @@ struct SwipeView: View {
                                                                     counter = 0
                                                                 }
                                                                 counter += 1
-                                                                print(counter)
                                                             }
                                                         }
                                                     }
@@ -321,7 +317,7 @@ struct SwipeView: View {
                                 }
                                 
                             }
-
+                            
                             HStack{
                                 ForEach(0..<3){ index in
                                     Button(action: {
@@ -330,7 +326,7 @@ struct SwipeView: View {
                                                 likedMoviesList.append(movies[counter].id)
                                                 movieModel.changeMoviesPage()
                                                 counter = 0
-
+                                                
                                             } else {
                                                 likedMoviesList.append(movies[counter].id)
                                                 counter += 1
@@ -344,7 +340,6 @@ struct SwipeView: View {
                                                             counter = 0
                                                         } else {
                                                             counter += 1
-                                                            print(counter)
                                                         }
                                                         
                                                     }
@@ -359,7 +354,6 @@ struct SwipeView: View {
                                                             counter = 0
                                                         }
                                                         counter += 1
-                                                        print(counter)
                                                     }
                                                 }
                                             }
@@ -443,13 +437,13 @@ struct SwipeView: View {
             }
         }
         .onAppear {
-
-                if hasSavedFilter == true {
-                    movieModel.filterMovies(genres: genres, score: Int(score)!)
-                    
-                } else {
-                    movieModel.changeMoviesPage()
-                }
+            
+            if hasSavedFilter == true {
+                movieModel.filterMovies(genres: genres, score: Int(score)!)
+                
+            } else {
+                movieModel.changeMoviesPage()
+            }
             
             
         }

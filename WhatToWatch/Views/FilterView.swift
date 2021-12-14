@@ -266,7 +266,7 @@ struct FilterView: View {
                             }
                         }
                     }
-                        
+                    
                     hasSavedFilter = true
                     
                 } label: {

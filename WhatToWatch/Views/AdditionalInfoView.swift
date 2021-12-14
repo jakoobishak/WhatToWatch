@@ -22,7 +22,6 @@ struct AdditionalInfoView: View {
                     }, placeholder: {ProgressView()})
                         .frame(maxWidth: 500, maxHeight: 400)
                         .padding()
-                  
                 } else {
                     AsyncImage(url: URL(string: "https://www.themoviedb.org/t/p/w500" + (movie.posterPath)!), content: { image in
                         image.resizable()
@@ -31,8 +30,6 @@ struct AdditionalInfoView: View {
                         .frame(maxWidth: 500, maxHeight: 400)
                         .padding()
                 }
-                
-                
                 Section {
                     Text("Title:").bold() + Text(" \(movie.title)")
                 }

@@ -33,7 +33,6 @@ struct TrashListView: View {
             movieDetailsModel.getMovieDetails(movies: dislikedMoviesList)
         }
         .toolbar {
-            
             Button {
                 showAlert = true
             } label : {
