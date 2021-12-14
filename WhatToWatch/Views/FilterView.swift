@@ -250,7 +250,7 @@ struct FilterView: View {
                     if let movies = movieModel.remote.data?.results {
                         for i in likedMoviesList.indices {
                             if movies[counter].id == likedMoviesList[i] {
-                                if counter == 19 {
+                                if counter == movies.count - 1 {
                                     counter = 0
                                 }
                                 counter += 1
@@ -259,7 +259,7 @@ struct FilterView: View {
                         
                         for i in dislikedMoviesList.indices {
                             if movies[counter].id == dislikedMoviesList[i] {
-                                if counter == 19 {
+                                if counter == movies.count - 1 {
                                     counter = 0
                                 }
                                 counter += 1
