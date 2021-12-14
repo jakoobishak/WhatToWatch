@@ -315,7 +315,6 @@ struct SwipeView: View {
                                             }
                                     )
                                 }
-                                
                             }
                             
                             HStack{
