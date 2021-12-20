@@ -10,7 +10,7 @@ import Combine
 import SwiftUI
 
 class MovieDetailsModel: ObservableObject {
-    var getURL = "https://api.themoviedb.org/3/movie/19404?api_key=646d70ab25d3bc369aa0ed0b2ed9e2d8&language=en-US"
+    var getURL = "https://api.themoviedb.org/3/movie/19404?api_key=API_KEY&language=en-US"
     var remotes: [Remote<MovieDetails>] = []
     
     private var cancellableTas: AnyCancellable?
@@ -19,7 +19,7 @@ class MovieDetailsModel: ObservableObject {
     func getMovieDetails(movies: [Int]) {
         
         for movie in movies {
-            let detailsURL = "https://api.themoviedb.org/3/movie/\(movie)?api_key=646d70ab25d3bc369aa0ed0b2ed9e2d8&language=en-US"
+            let detailsURL = "https://api.themoviedb.org/3/movie/\(movie)?api_key=API_KEY&language=en-US"
             let remote = Remote<MovieDetails>(url: URL(string: detailsURL)!)
             self.remotes.append(remote)
             self.anyCancellable = remote.objectWillChange.sink(receiveValue: { [weak self] data in

@@ -15,7 +15,7 @@ class MovieTrailerModel: ObservableObject {
     
     //https://www.youtube.com/embed/
     
-    var getURL = "https://api.themoviedb.org/3/movie/223/videos?api_key=646d70ab25d3bc369aa0ed0b2ed9e2d8&language=en-US"
+    var getURL = "https://api.themoviedb.org/3/movie/223/videos?api_key=API_KEY&language=en-US"
     var remote: Remote<MovieTrailerSet>
     
     private var cancellableTas: AnyCancellable?
@@ -23,7 +23,7 @@ class MovieTrailerModel: ObservableObject {
     
     func getMovieTrailer(movieId: Int) {
         
-        let trailerURL = "https://api.themoviedb.org/3/movie/\(movieId)/videos?api_key=646d70ab25d3bc369aa0ed0b2ed9e2d8&language=en-US"
+        let trailerURL = "https://api.themoviedb.org/3/movie/\(movieId)/videos?api_key=API_KEY&language=en-US"
         remote = Remote(url: URL(string: trailerURL)!)
         anyCancellable = remote.objectWillChange.sink(receiveValue: { [weak self] in
             self?.objectWillChange.send()

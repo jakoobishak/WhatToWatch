@@ -12,7 +12,7 @@ class MovieModel: ObservableObject {
     @AppStorage("pageCounter") var pageCounter: Int = 1
     @AppStorage("counter") var counter = Int()
     
-    var getURL = "https://api.themoviedb.org/3/discover/movie?api_key=646d70ab25d3bc369aa0ed0b2ed9e2d8&language=en-US&sort_by=popularity.desc&page=1"
+    var getURL = "https://api.themoviedb.org/3/discover/movie?api_key=API_KEY&language=en-US&sort_by=popularity.desc&page=1"
 
     var remote: Remote<MovieSet>
 
@@ -24,7 +24,7 @@ class MovieModel: ObservableObject {
             pageCounter += 1
         }
         
-        getURL = "https://api.themoviedb.org/3/discover/movie?api_key=646d70ab25d3bc369aa0ed0b2ed9e2d8&language=en-US&sort_by=popularity.desc&page=\(pageCounter)"
+        getURL = "https://api.themoviedb.org/3/discover/movie?api_key=API_KEY&language=en-US&sort_by=popularity.desc&page=\(pageCounter)"
         remote = Remote(url: URL(string: getURL)!)
         anyCancellable = remote.objectWillChange.sink(receiveValue: { [weak self] in
             self?.objectWillChange.send()
@@ -47,7 +47,7 @@ class MovieModel: ObservableObject {
             }
         }
         
-        getURL = "https://api.themoviedb.org/3/discover/movie?api_key=646d70ab25d3bc369aa0ed0b2ed9e2d8&language=en-US&sort_by=popularity.desc&page=\(pageCounter)&with_genres=\(allGenres)&vote_average.gte=\(score)"
+        getURL = "https://api.themoviedb.org/3/discover/movie?api_key=API_KEY&language=en-US&sort_by=popularity.desc&page=\(pageCounter)&with_genres=\(allGenres)&vote_average.gte=\(score)"
         remote = Remote(url: URL(string: getURL)!)
         anyCancellable = remote.objectWillChange.sink(receiveValue: { [weak self] in
             self?.objectWillChange.send()
